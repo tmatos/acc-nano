@@ -64,7 +64,7 @@
 #define SYSID_QSYS_SPAN 8
 #define SYSID_QSYS_END 0x1007
 #define SYSID_QSYS_ID 2899645186
-#define SYSID_QSYS_TIMESTAMP 1564088048
+#define SYSID_QSYS_TIMESTAMP 1564259186
 
 /*
  * Macros for device 'jtag_uart', class 'altera_avalon_jtag_uart'
@@ -105,6 +105,30 @@
 #define LED_PIO_HAS_TRI 0
 #define LED_PIO_IRQ_TYPE NONE
 #define LED_PIO_RESET_VALUE 127
+
+/*
+ * Macros for device 'pio_controle', class 'altera_avalon_pio'
+ * The macros are prefixed with 'PIO_CONTROLE_'.
+ * The prefix is the slave descriptor.
+ */
+#define PIO_CONTROLE_COMPONENT_TYPE altera_avalon_pio
+#define PIO_CONTROLE_COMPONENT_NAME pio_controle
+#define PIO_CONTROLE_BASE 0x3010
+#define PIO_CONTROLE_SPAN 16
+#define PIO_CONTROLE_END 0x301f
+#define PIO_CONTROLE_BIT_CLEARING_EDGE_REGISTER 0
+#define PIO_CONTROLE_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define PIO_CONTROLE_CAPTURE 0
+#define PIO_CONTROLE_DATA_WIDTH 8
+#define PIO_CONTROLE_DO_TEST_BENCH_WIRING 0
+#define PIO_CONTROLE_DRIVEN_SIM_VALUE 0
+#define PIO_CONTROLE_EDGE_TYPE NONE
+#define PIO_CONTROLE_FREQ 50000000
+#define PIO_CONTROLE_HAS_IN 1
+#define PIO_CONTROLE_HAS_OUT 1
+#define PIO_CONTROLE_HAS_TRI 0
+#define PIO_CONTROLE_IRQ_TYPE NONE
+#define PIO_CONTROLE_RESET_VALUE 0
 
 /*
  * Macros for device 'dipsw_pio', class 'altera_avalon_pio'
