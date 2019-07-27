@@ -30,6 +30,14 @@
          type = "String";
       }
    }
+   element accelerator_0
+   {
+      datum _sortIndex
+      {
+         value = "14";
+         type = "int";
+      }
+   }
    element button_pio
    {
       datum _sortIndex
@@ -234,6 +242,14 @@
          type = "int";
       }
    }
+   element pio_controle
+   {
+      datum _sortIndex
+      {
+         value = "13";
+         type = "int";
+      }
+   }
    element sysid_qsys
    {
       datum _sortIndex
@@ -335,6 +351,7 @@
   <parameter name="INTR_TYPE" value="0" />
   <parameter name="IRQ_PORT_CNT" value="3" />
  </module>
+ <module name="accelerator_0" kind="accelerator" version="1.0" enabled="1" />
  <module name="button_pio" kind="altera_avalon_pio" version="18.1" enabled="1">
   <parameter name="bitClearingEdgeCapReg" value="true" />
   <parameter name="bitModifyingOutReg" value="false" />
@@ -1025,6 +1042,24 @@
   <parameter name="writable" value="true" />
  </module>
  <module
+   name="pio_controle"
+   kind="altera_avalon_pio"
+   version="18.1"
+   enabled="1">
+  <parameter name="bitClearingEdgeCapReg" value="false" />
+  <parameter name="bitModifyingOutReg" value="false" />
+  <parameter name="captureEdge" value="false" />
+  <parameter name="clockRate" value="50000000" />
+  <parameter name="direction" value="InOut" />
+  <parameter name="edgeType" value="RISING" />
+  <parameter name="generateIRQ" value="false" />
+  <parameter name="irqType" value="LEVEL" />
+  <parameter name="resetValue" value="0" />
+  <parameter name="simDoTestBenchWiring" value="false" />
+  <parameter name="simDrivenValue" value="0" />
+  <parameter name="width" value="8" />
+ </module>
+ <module
    name="sysid_qsys"
    kind="altera_avalon_sysid_qsys"
    version="18.1"
@@ -1097,6 +1132,15 @@
    end="onchip_memory2_0.s1">
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0x0000" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="18.1"
+   start="mm_bridge_0.m0"
+   end="pio_controle.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x3010" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1193,6 +1237,8 @@
    end="f2sdram_only_master.clk" />
  <connection kind="clock" version="18.1" start="clk_0.clk" end="mm_bridge_0.clk" />
  <connection kind="clock" version="18.1" start="clk_0.clk" end="ILC.clk" />
+ <connection kind="clock" version="18.1" start="clk_0.clk" end="pio_controle.clk" />
+ <connection kind="clock" version="18.1" start="clk_0.clk" end="accelerator_0.clk" />
  <connection
    kind="clock"
    version="18.1"
@@ -1297,8 +1343,18 @@
    kind="reset"
    version="18.1"
    start="clk_0.clk_reset"
+   end="pio_controle.reset" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="clk_0.clk_reset"
    end="onchip_memory2_0.reset1" />
  <connection kind="reset" version="18.1" start="clk_0.clk_reset" end="ILC.reset_n" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="clk_0.clk_reset"
+   end="accelerator_0.rst_n" />
  <interconnectRequirement for="$system" name="qsys_mm.clockCrossingAdapter" value="HANDSHAKE" />
  <interconnectRequirement for="$system" name="qsys_mm.maxAdditionalLatency" value="1" />
 </system>

@@ -5,8 +5,12 @@
   <columns>
    <connections preferredWidth="271" />
    <irq preferredWidth="63" />
+   <name preferredWidth="182" />
+   <export preferredWidth="200" />
+   <description preferredWidth="223" />
   </columns>
  </systemtable>
- <library expandedCategories="Project,Library" />
+ <library
+   expandedCategories="Library/Qsys Interconnect,Project,Library/Processors and Peripherals,Library,Library/Interface Protocols,Library/Processors and Peripherals/Peripherals,Library/Basic Functions" />
  <window width="1372" height="742" x="-3" y="0" />
 </preferences>
