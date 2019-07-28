@@ -29,6 +29,9 @@ int main() {
 	int led_mask;
 	void *h2p_led_addr;
 	void *h2p_controle_addr;
+    volatile void *h2p_sw_addr;
+    volatile uint32_t valor_sw;
+
 
 	// map the address space for the LED registers into user space so we can interact with them.
 	// we'll actually map in the entire CSR span of the HPS since we want to access various registers within that span
@@ -45,6 +48,15 @@ int main() {
 		close( fd );
 		return( 1 );
 	}
+
+
+
+    h2p_sw_addr = virtual_base + ( ( unsigned long  )( ALT_LWFPGASLVS_OFST + DIPSW_PIO_BASE ) & ( unsigned long)( HW_REGS_MASK ) );
+    valor_sw = *(uint32_t *)h2p_sw_addr; 
+
+    printf("SW = %u\n", valor_sw);
+
+
 	
 	h2p_led_addr = virtual_base + ( ( unsigned long  )( ALT_FPGASLVS_OFST + LED_PIO_BASE ) & ( unsigned long)( HW_REGS_MASK ) );
 	
