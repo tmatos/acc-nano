@@ -46,7 +46,7 @@ int main() {
 		return( 1 );
 	}
 	
-	h2p_led_addr = virtual_base + ( ( unsigned long  )( ALT_LWFPGASLVS_OFST + LED_PIO_BASE ) & ( unsigned long)( HW_REGS_MASK ) );
+	h2p_led_addr = virtual_base + ( ( unsigned long  )( ALT_FPGASLVS_OFST + LED_PIO_BASE ) & ( unsigned long)( HW_REGS_MASK ) );
 	
 
 	// toggle the LEDs a bit
