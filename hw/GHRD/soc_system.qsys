@@ -1031,7 +1031,7 @@
   <parameter name="PIPELINE_COMMAND" value="1" />
   <parameter name="PIPELINE_RESPONSE" value="1" />
   <parameter name="SYMBOL_WIDTH" value="8" />
-  <parameter name="SYSINFO_ADDR_WIDTH" value="14" />
+  <parameter name="SYSINFO_ADDR_WIDTH" value="18" />
   <parameter name="USE_AUTO_ADDRESS_WIDTH" value="1" />
   <parameter name="USE_RESPONSE" value="0" />
  </module>
@@ -1131,7 +1131,25 @@
  <connection
    kind="avalon"
    version="18.1"
+   start="mm_bridge_1.m0"
+   end="ILC.avalon_slave">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x00030000" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="18.1"
    start="mm_bridge_0.m0"
+   end="sysid_qsys.control_slave">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x1000" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="18.1"
+   start="mm_bridge_1.m0"
    end="sysid_qsys.control_slave">
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0x1000" />

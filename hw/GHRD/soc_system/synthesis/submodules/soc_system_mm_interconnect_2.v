@@ -28,7 +28,7 @@ module soc_system_mm_interconnect_2 (
 		input  wire        mm_bridge_0_m0_write,                                   //                                                 .write
 		input  wire [31:0] mm_bridge_0_m0_writedata,                               //                                                 .writedata
 		input  wire        mm_bridge_0_m0_debugaccess,                             //                                                 .debugaccess
-		input  wire [13:0] mm_bridge_1_m0_address,                                 //                                   mm_bridge_1_m0.address
+		input  wire [17:0] mm_bridge_1_m0_address,                                 //                                   mm_bridge_1_m0.address
 		output wire        mm_bridge_1_m0_waitrequest,                             //                                                 .waitrequest
 		input  wire [0:0]  mm_bridge_1_m0_burstcount,                              //                                                 .burstcount
 		input  wire [3:0]  mm_bridge_1_m0_byteenable,                              //                                                 .byteenable
@@ -568,24 +568,36 @@ module soc_system_mm_interconnect_2 (
 	wire    [7:0] cmd_demux_001_src5_channel;                                                 // cmd_demux_001:src5_channel -> cmd_mux_005:sink0_channel
 	wire          cmd_demux_001_src5_startofpacket;                                           // cmd_demux_001:src5_startofpacket -> cmd_mux_005:sink0_startofpacket
 	wire          cmd_demux_001_src5_endofpacket;                                             // cmd_demux_001:src5_endofpacket -> cmd_mux_005:sink0_endofpacket
-	wire          cmd_demux_002_src0_valid;                                                   // cmd_demux_002:src0_valid -> cmd_mux_005:sink1_valid
-	wire  [105:0] cmd_demux_002_src0_data;                                                    // cmd_demux_002:src0_data -> cmd_mux_005:sink1_data
-	wire          cmd_demux_002_src0_ready;                                                   // cmd_mux_005:sink1_ready -> cmd_demux_002:src0_ready
-	wire    [7:0] cmd_demux_002_src0_channel;                                                 // cmd_demux_002:src0_channel -> cmd_mux_005:sink1_channel
-	wire          cmd_demux_002_src0_startofpacket;                                           // cmd_demux_002:src0_startofpacket -> cmd_mux_005:sink1_startofpacket
-	wire          cmd_demux_002_src0_endofpacket;                                             // cmd_demux_002:src0_endofpacket -> cmd_mux_005:sink1_endofpacket
-	wire          cmd_demux_002_src1_valid;                                                   // cmd_demux_002:src1_valid -> cmd_mux_006:sink0_valid
-	wire  [105:0] cmd_demux_002_src1_data;                                                    // cmd_demux_002:src1_data -> cmd_mux_006:sink0_data
-	wire          cmd_demux_002_src1_ready;                                                   // cmd_mux_006:sink0_ready -> cmd_demux_002:src1_ready
-	wire    [7:0] cmd_demux_002_src1_channel;                                                 // cmd_demux_002:src1_channel -> cmd_mux_006:sink0_channel
-	wire          cmd_demux_002_src1_startofpacket;                                           // cmd_demux_002:src1_startofpacket -> cmd_mux_006:sink0_startofpacket
-	wire          cmd_demux_002_src1_endofpacket;                                             // cmd_demux_002:src1_endofpacket -> cmd_mux_006:sink0_endofpacket
-	wire          cmd_demux_002_src2_valid;                                                   // cmd_demux_002:src2_valid -> cmd_mux_007:sink0_valid
-	wire  [105:0] cmd_demux_002_src2_data;                                                    // cmd_demux_002:src2_data -> cmd_mux_007:sink0_data
-	wire          cmd_demux_002_src2_ready;                                                   // cmd_mux_007:sink0_ready -> cmd_demux_002:src2_ready
-	wire    [7:0] cmd_demux_002_src2_channel;                                                 // cmd_demux_002:src2_channel -> cmd_mux_007:sink0_channel
-	wire          cmd_demux_002_src2_startofpacket;                                           // cmd_demux_002:src2_startofpacket -> cmd_mux_007:sink0_startofpacket
-	wire          cmd_demux_002_src2_endofpacket;                                             // cmd_demux_002:src2_endofpacket -> cmd_mux_007:sink0_endofpacket
+	wire          cmd_demux_002_src0_valid;                                                   // cmd_demux_002:src0_valid -> cmd_mux_001:sink2_valid
+	wire  [105:0] cmd_demux_002_src0_data;                                                    // cmd_demux_002:src0_data -> cmd_mux_001:sink2_data
+	wire          cmd_demux_002_src0_ready;                                                   // cmd_mux_001:sink2_ready -> cmd_demux_002:src0_ready
+	wire    [7:0] cmd_demux_002_src0_channel;                                                 // cmd_demux_002:src0_channel -> cmd_mux_001:sink2_channel
+	wire          cmd_demux_002_src0_startofpacket;                                           // cmd_demux_002:src0_startofpacket -> cmd_mux_001:sink2_startofpacket
+	wire          cmd_demux_002_src0_endofpacket;                                             // cmd_demux_002:src0_endofpacket -> cmd_mux_001:sink2_endofpacket
+	wire          cmd_demux_002_src1_valid;                                                   // cmd_demux_002:src1_valid -> cmd_mux_002:sink2_valid
+	wire  [105:0] cmd_demux_002_src1_data;                                                    // cmd_demux_002:src1_data -> cmd_mux_002:sink2_data
+	wire          cmd_demux_002_src1_ready;                                                   // cmd_mux_002:sink2_ready -> cmd_demux_002:src1_ready
+	wire    [7:0] cmd_demux_002_src1_channel;                                                 // cmd_demux_002:src1_channel -> cmd_mux_002:sink2_channel
+	wire          cmd_demux_002_src1_startofpacket;                                           // cmd_demux_002:src1_startofpacket -> cmd_mux_002:sink2_startofpacket
+	wire          cmd_demux_002_src1_endofpacket;                                             // cmd_demux_002:src1_endofpacket -> cmd_mux_002:sink2_endofpacket
+	wire          cmd_demux_002_src2_valid;                                                   // cmd_demux_002:src2_valid -> cmd_mux_005:sink1_valid
+	wire  [105:0] cmd_demux_002_src2_data;                                                    // cmd_demux_002:src2_data -> cmd_mux_005:sink1_data
+	wire          cmd_demux_002_src2_ready;                                                   // cmd_mux_005:sink1_ready -> cmd_demux_002:src2_ready
+	wire    [7:0] cmd_demux_002_src2_channel;                                                 // cmd_demux_002:src2_channel -> cmd_mux_005:sink1_channel
+	wire          cmd_demux_002_src2_startofpacket;                                           // cmd_demux_002:src2_startofpacket -> cmd_mux_005:sink1_startofpacket
+	wire          cmd_demux_002_src2_endofpacket;                                             // cmd_demux_002:src2_endofpacket -> cmd_mux_005:sink1_endofpacket
+	wire          cmd_demux_002_src3_valid;                                                   // cmd_demux_002:src3_valid -> cmd_mux_006:sink0_valid
+	wire  [105:0] cmd_demux_002_src3_data;                                                    // cmd_demux_002:src3_data -> cmd_mux_006:sink0_data
+	wire          cmd_demux_002_src3_ready;                                                   // cmd_mux_006:sink0_ready -> cmd_demux_002:src3_ready
+	wire    [7:0] cmd_demux_002_src3_channel;                                                 // cmd_demux_002:src3_channel -> cmd_mux_006:sink0_channel
+	wire          cmd_demux_002_src3_startofpacket;                                           // cmd_demux_002:src3_startofpacket -> cmd_mux_006:sink0_startofpacket
+	wire          cmd_demux_002_src3_endofpacket;                                             // cmd_demux_002:src3_endofpacket -> cmd_mux_006:sink0_endofpacket
+	wire          cmd_demux_002_src4_valid;                                                   // cmd_demux_002:src4_valid -> cmd_mux_007:sink0_valid
+	wire  [105:0] cmd_demux_002_src4_data;                                                    // cmd_demux_002:src4_data -> cmd_mux_007:sink0_data
+	wire          cmd_demux_002_src4_ready;                                                   // cmd_mux_007:sink0_ready -> cmd_demux_002:src4_ready
+	wire    [7:0] cmd_demux_002_src4_channel;                                                 // cmd_demux_002:src4_channel -> cmd_mux_007:sink0_channel
+	wire          cmd_demux_002_src4_startofpacket;                                           // cmd_demux_002:src4_startofpacket -> cmd_mux_007:sink0_startofpacket
+	wire          cmd_demux_002_src4_endofpacket;                                             // cmd_demux_002:src4_endofpacket -> cmd_mux_007:sink0_endofpacket
 	wire          rsp_demux_src0_valid;                                                       // rsp_demux:src0_valid -> rsp_mux:sink0_valid
 	wire  [105:0] rsp_demux_src0_data;                                                        // rsp_demux:src0_data -> rsp_mux:sink0_data
 	wire          rsp_demux_src0_ready;                                                       // rsp_mux:sink0_ready -> rsp_demux:src0_ready
@@ -610,6 +622,12 @@ module soc_system_mm_interconnect_2 (
 	wire    [7:0] rsp_demux_001_src1_channel;                                                 // rsp_demux_001:src1_channel -> rsp_mux_001:sink1_channel
 	wire          rsp_demux_001_src1_startofpacket;                                           // rsp_demux_001:src1_startofpacket -> rsp_mux_001:sink1_startofpacket
 	wire          rsp_demux_001_src1_endofpacket;                                             // rsp_demux_001:src1_endofpacket -> rsp_mux_001:sink1_endofpacket
+	wire          rsp_demux_001_src2_valid;                                                   // rsp_demux_001:src2_valid -> rsp_mux_002:sink0_valid
+	wire  [105:0] rsp_demux_001_src2_data;                                                    // rsp_demux_001:src2_data -> rsp_mux_002:sink0_data
+	wire          rsp_demux_001_src2_ready;                                                   // rsp_mux_002:sink0_ready -> rsp_demux_001:src2_ready
+	wire    [7:0] rsp_demux_001_src2_channel;                                                 // rsp_demux_001:src2_channel -> rsp_mux_002:sink0_channel
+	wire          rsp_demux_001_src2_startofpacket;                                           // rsp_demux_001:src2_startofpacket -> rsp_mux_002:sink0_startofpacket
+	wire          rsp_demux_001_src2_endofpacket;                                             // rsp_demux_001:src2_endofpacket -> rsp_mux_002:sink0_endofpacket
 	wire          rsp_demux_002_src0_valid;                                                   // rsp_demux_002:src0_valid -> rsp_mux:sink2_valid
 	wire  [105:0] rsp_demux_002_src0_data;                                                    // rsp_demux_002:src0_data -> rsp_mux:sink2_data
 	wire          rsp_demux_002_src0_ready;                                                   // rsp_mux:sink2_ready -> rsp_demux_002:src0_ready
@@ -622,6 +640,12 @@ module soc_system_mm_interconnect_2 (
 	wire    [7:0] rsp_demux_002_src1_channel;                                                 // rsp_demux_002:src1_channel -> rsp_mux_001:sink2_channel
 	wire          rsp_demux_002_src1_startofpacket;                                           // rsp_demux_002:src1_startofpacket -> rsp_mux_001:sink2_startofpacket
 	wire          rsp_demux_002_src1_endofpacket;                                             // rsp_demux_002:src1_endofpacket -> rsp_mux_001:sink2_endofpacket
+	wire          rsp_demux_002_src2_valid;                                                   // rsp_demux_002:src2_valid -> rsp_mux_002:sink1_valid
+	wire  [105:0] rsp_demux_002_src2_data;                                                    // rsp_demux_002:src2_data -> rsp_mux_002:sink1_data
+	wire          rsp_demux_002_src2_ready;                                                   // rsp_mux_002:sink1_ready -> rsp_demux_002:src2_ready
+	wire    [7:0] rsp_demux_002_src2_channel;                                                 // rsp_demux_002:src2_channel -> rsp_mux_002:sink1_channel
+	wire          rsp_demux_002_src2_startofpacket;                                           // rsp_demux_002:src2_startofpacket -> rsp_mux_002:sink1_startofpacket
+	wire          rsp_demux_002_src2_endofpacket;                                             // rsp_demux_002:src2_endofpacket -> rsp_mux_002:sink1_endofpacket
 	wire          rsp_demux_003_src0_valid;                                                   // rsp_demux_003:src0_valid -> rsp_mux:sink3_valid
 	wire  [105:0] rsp_demux_003_src0_data;                                                    // rsp_demux_003:src0_data -> rsp_mux:sink3_data
 	wire          rsp_demux_003_src0_ready;                                                   // rsp_mux:sink3_ready -> rsp_demux_003:src0_ready
@@ -652,24 +676,24 @@ module soc_system_mm_interconnect_2 (
 	wire    [7:0] rsp_demux_005_src0_channel;                                                 // rsp_demux_005:src0_channel -> rsp_mux_001:sink5_channel
 	wire          rsp_demux_005_src0_startofpacket;                                           // rsp_demux_005:src0_startofpacket -> rsp_mux_001:sink5_startofpacket
 	wire          rsp_demux_005_src0_endofpacket;                                             // rsp_demux_005:src0_endofpacket -> rsp_mux_001:sink5_endofpacket
-	wire          rsp_demux_005_src1_valid;                                                   // rsp_demux_005:src1_valid -> rsp_mux_002:sink0_valid
-	wire  [105:0] rsp_demux_005_src1_data;                                                    // rsp_demux_005:src1_data -> rsp_mux_002:sink0_data
-	wire          rsp_demux_005_src1_ready;                                                   // rsp_mux_002:sink0_ready -> rsp_demux_005:src1_ready
-	wire    [7:0] rsp_demux_005_src1_channel;                                                 // rsp_demux_005:src1_channel -> rsp_mux_002:sink0_channel
-	wire          rsp_demux_005_src1_startofpacket;                                           // rsp_demux_005:src1_startofpacket -> rsp_mux_002:sink0_startofpacket
-	wire          rsp_demux_005_src1_endofpacket;                                             // rsp_demux_005:src1_endofpacket -> rsp_mux_002:sink0_endofpacket
-	wire          rsp_demux_006_src0_valid;                                                   // rsp_demux_006:src0_valid -> rsp_mux_002:sink1_valid
-	wire  [105:0] rsp_demux_006_src0_data;                                                    // rsp_demux_006:src0_data -> rsp_mux_002:sink1_data
-	wire          rsp_demux_006_src0_ready;                                                   // rsp_mux_002:sink1_ready -> rsp_demux_006:src0_ready
-	wire    [7:0] rsp_demux_006_src0_channel;                                                 // rsp_demux_006:src0_channel -> rsp_mux_002:sink1_channel
-	wire          rsp_demux_006_src0_startofpacket;                                           // rsp_demux_006:src0_startofpacket -> rsp_mux_002:sink1_startofpacket
-	wire          rsp_demux_006_src0_endofpacket;                                             // rsp_demux_006:src0_endofpacket -> rsp_mux_002:sink1_endofpacket
-	wire          rsp_demux_007_src0_valid;                                                   // rsp_demux_007:src0_valid -> rsp_mux_002:sink2_valid
-	wire  [105:0] rsp_demux_007_src0_data;                                                    // rsp_demux_007:src0_data -> rsp_mux_002:sink2_data
-	wire          rsp_demux_007_src0_ready;                                                   // rsp_mux_002:sink2_ready -> rsp_demux_007:src0_ready
-	wire    [7:0] rsp_demux_007_src0_channel;                                                 // rsp_demux_007:src0_channel -> rsp_mux_002:sink2_channel
-	wire          rsp_demux_007_src0_startofpacket;                                           // rsp_demux_007:src0_startofpacket -> rsp_mux_002:sink2_startofpacket
-	wire          rsp_demux_007_src0_endofpacket;                                             // rsp_demux_007:src0_endofpacket -> rsp_mux_002:sink2_endofpacket
+	wire          rsp_demux_005_src1_valid;                                                   // rsp_demux_005:src1_valid -> rsp_mux_002:sink2_valid
+	wire  [105:0] rsp_demux_005_src1_data;                                                    // rsp_demux_005:src1_data -> rsp_mux_002:sink2_data
+	wire          rsp_demux_005_src1_ready;                                                   // rsp_mux_002:sink2_ready -> rsp_demux_005:src1_ready
+	wire    [7:0] rsp_demux_005_src1_channel;                                                 // rsp_demux_005:src1_channel -> rsp_mux_002:sink2_channel
+	wire          rsp_demux_005_src1_startofpacket;                                           // rsp_demux_005:src1_startofpacket -> rsp_mux_002:sink2_startofpacket
+	wire          rsp_demux_005_src1_endofpacket;                                             // rsp_demux_005:src1_endofpacket -> rsp_mux_002:sink2_endofpacket
+	wire          rsp_demux_006_src0_valid;                                                   // rsp_demux_006:src0_valid -> rsp_mux_002:sink3_valid
+	wire  [105:0] rsp_demux_006_src0_data;                                                    // rsp_demux_006:src0_data -> rsp_mux_002:sink3_data
+	wire          rsp_demux_006_src0_ready;                                                   // rsp_mux_002:sink3_ready -> rsp_demux_006:src0_ready
+	wire    [7:0] rsp_demux_006_src0_channel;                                                 // rsp_demux_006:src0_channel -> rsp_mux_002:sink3_channel
+	wire          rsp_demux_006_src0_startofpacket;                                           // rsp_demux_006:src0_startofpacket -> rsp_mux_002:sink3_startofpacket
+	wire          rsp_demux_006_src0_endofpacket;                                             // rsp_demux_006:src0_endofpacket -> rsp_mux_002:sink3_endofpacket
+	wire          rsp_demux_007_src0_valid;                                                   // rsp_demux_007:src0_valid -> rsp_mux_002:sink4_valid
+	wire  [105:0] rsp_demux_007_src0_data;                                                    // rsp_demux_007:src0_data -> rsp_mux_002:sink4_data
+	wire          rsp_demux_007_src0_ready;                                                   // rsp_mux_002:sink4_ready -> rsp_demux_007:src0_ready
+	wire    [7:0] rsp_demux_007_src0_channel;                                                 // rsp_demux_007:src0_channel -> rsp_mux_002:sink4_channel
+	wire          rsp_demux_007_src0_startofpacket;                                           // rsp_demux_007:src0_startofpacket -> rsp_mux_002:sink4_startofpacket
+	wire          rsp_demux_007_src0_endofpacket;                                             // rsp_demux_007:src0_endofpacket -> rsp_mux_002:sink4_endofpacket
 	wire    [7:0] mm_bridge_0_m0_limiter_cmd_valid_data;                                      // mm_bridge_0_m0_limiter:cmd_src_valid -> cmd_demux:sink_valid
 	wire    [7:0] fpga_only_master_master_limiter_cmd_valid_data;                             // fpga_only_master_master_limiter:cmd_src_valid -> cmd_demux_001:sink_valid
 	wire    [7:0] mm_bridge_1_m0_limiter_cmd_valid_data;                                      // mm_bridge_1_m0_limiter:cmd_src_valid -> cmd_demux_002:sink_valid
@@ -851,7 +875,7 @@ module soc_system_mm_interconnect_2 (
 	);
 
 	altera_merlin_master_translator #(
-		.AV_ADDRESS_W                (14),
+		.AV_ADDRESS_W                (18),
 		.AV_DATA_W                   (32),
 		.AV_BURSTCOUNT_W             (1),
 		.AV_BYTEENABLE_W             (4),
@@ -2729,7 +2753,7 @@ module soc_system_mm_interconnect_2 (
 		.src_endofpacket    (router_003_src_endofpacket)                          //          .endofpacket
 	);
 
-	soc_system_mm_interconnect_2_router_003 router_004 (
+	soc_system_mm_interconnect_2_router_004 router_004 (
 		.sink_ready         (ilc_avalon_slave_agent_rp_ready),               //      sink.ready
 		.sink_valid         (ilc_avalon_slave_agent_rp_valid),               //          .valid
 		.sink_data          (ilc_avalon_slave_agent_rp_data),                //          .data
@@ -2745,7 +2769,7 @@ module soc_system_mm_interconnect_2 (
 		.src_endofpacket    (router_004_src_endofpacket)                     //          .endofpacket
 	);
 
-	soc_system_mm_interconnect_2_router_003 router_005 (
+	soc_system_mm_interconnect_2_router_004 router_005 (
 		.sink_ready         (sysid_qsys_control_slave_agent_rp_ready),         //      sink.ready
 		.sink_valid         (sysid_qsys_control_slave_agent_rp_valid),         //          .valid
 		.sink_data          (sysid_qsys_control_slave_agent_rp_data),          //          .data
@@ -3079,7 +3103,7 @@ module soc_system_mm_interconnect_2 (
 		.src5_endofpacket   (cmd_demux_001_src5_endofpacket)                         //           .endofpacket
 	);
 
-	soc_system_mm_interconnect_2_cmd_demux_002 cmd_demux_002 (
+	soc_system_mm_interconnect_2_cmd_demux cmd_demux_002 (
 		.clk                (clk_0_clk_clk),                                 //        clk.clk
 		.reset              (mm_bridge_0_reset_reset_bridge_in_reset_reset), //  clk_reset.reset
 		.sink_ready         (mm_bridge_1_m0_limiter_cmd_src_ready),          //       sink.ready
@@ -3105,7 +3129,19 @@ module soc_system_mm_interconnect_2 (
 		.src2_data          (cmd_demux_002_src2_data),                       //           .data
 		.src2_channel       (cmd_demux_002_src2_channel),                    //           .channel
 		.src2_startofpacket (cmd_demux_002_src2_startofpacket),              //           .startofpacket
-		.src2_endofpacket   (cmd_demux_002_src2_endofpacket)                 //           .endofpacket
+		.src2_endofpacket   (cmd_demux_002_src2_endofpacket),                //           .endofpacket
+		.src3_ready         (cmd_demux_002_src3_ready),                      //       src3.ready
+		.src3_valid         (cmd_demux_002_src3_valid),                      //           .valid
+		.src3_data          (cmd_demux_002_src3_data),                       //           .data
+		.src3_channel       (cmd_demux_002_src3_channel),                    //           .channel
+		.src3_startofpacket (cmd_demux_002_src3_startofpacket),              //           .startofpacket
+		.src3_endofpacket   (cmd_demux_002_src3_endofpacket),                //           .endofpacket
+		.src4_ready         (cmd_demux_002_src4_ready),                      //       src4.ready
+		.src4_valid         (cmd_demux_002_src4_valid),                      //           .valid
+		.src4_data          (cmd_demux_002_src4_data),                       //           .data
+		.src4_channel       (cmd_demux_002_src4_channel),                    //           .channel
+		.src4_startofpacket (cmd_demux_002_src4_startofpacket),              //           .startofpacket
+		.src4_endofpacket   (cmd_demux_002_src4_endofpacket)                 //           .endofpacket
 	);
 
 	soc_system_mm_interconnect_2_cmd_mux cmd_mux (
@@ -3131,7 +3167,7 @@ module soc_system_mm_interconnect_2 (
 		.sink1_endofpacket   (cmd_demux_001_src0_endofpacket)                 //          .endofpacket
 	);
 
-	soc_system_mm_interconnect_2_cmd_mux cmd_mux_001 (
+	soc_system_mm_interconnect_2_cmd_mux_001 cmd_mux_001 (
 		.clk                 (clk_0_clk_clk),                                 //       clk.clk
 		.reset               (mm_bridge_0_reset_reset_bridge_in_reset_reset), // clk_reset.reset
 		.src_ready           (cmd_mux_001_src_ready),                         //       src.ready
@@ -3151,10 +3187,16 @@ module soc_system_mm_interconnect_2 (
 		.sink1_channel       (cmd_demux_001_src1_channel),                    //          .channel
 		.sink1_data          (cmd_demux_001_src1_data),                       //          .data
 		.sink1_startofpacket (cmd_demux_001_src1_startofpacket),              //          .startofpacket
-		.sink1_endofpacket   (cmd_demux_001_src1_endofpacket)                 //          .endofpacket
+		.sink1_endofpacket   (cmd_demux_001_src1_endofpacket),                //          .endofpacket
+		.sink2_ready         (cmd_demux_002_src0_ready),                      //     sink2.ready
+		.sink2_valid         (cmd_demux_002_src0_valid),                      //          .valid
+		.sink2_channel       (cmd_demux_002_src0_channel),                    //          .channel
+		.sink2_data          (cmd_demux_002_src0_data),                       //          .data
+		.sink2_startofpacket (cmd_demux_002_src0_startofpacket),              //          .startofpacket
+		.sink2_endofpacket   (cmd_demux_002_src0_endofpacket)                 //          .endofpacket
 	);
 
-	soc_system_mm_interconnect_2_cmd_mux cmd_mux_002 (
+	soc_system_mm_interconnect_2_cmd_mux_001 cmd_mux_002 (
 		.clk                 (clk_0_clk_clk),                                 //       clk.clk
 		.reset               (mm_bridge_0_reset_reset_bridge_in_reset_reset), // clk_reset.reset
 		.src_ready           (cmd_mux_002_src_ready),                         //       src.ready
@@ -3174,7 +3216,13 @@ module soc_system_mm_interconnect_2 (
 		.sink1_channel       (cmd_demux_001_src2_channel),                    //          .channel
 		.sink1_data          (cmd_demux_001_src2_data),                       //          .data
 		.sink1_startofpacket (cmd_demux_001_src2_startofpacket),              //          .startofpacket
-		.sink1_endofpacket   (cmd_demux_001_src2_endofpacket)                 //          .endofpacket
+		.sink1_endofpacket   (cmd_demux_001_src2_endofpacket),                //          .endofpacket
+		.sink2_ready         (cmd_demux_002_src1_ready),                      //     sink2.ready
+		.sink2_valid         (cmd_demux_002_src1_valid),                      //          .valid
+		.sink2_channel       (cmd_demux_002_src1_channel),                    //          .channel
+		.sink2_data          (cmd_demux_002_src1_data),                       //          .data
+		.sink2_startofpacket (cmd_demux_002_src1_startofpacket),              //          .startofpacket
+		.sink2_endofpacket   (cmd_demux_002_src1_endofpacket)                 //          .endofpacket
 	);
 
 	soc_system_mm_interconnect_2_cmd_mux cmd_mux_003 (
@@ -3238,12 +3286,12 @@ module soc_system_mm_interconnect_2 (
 		.sink0_data          (cmd_demux_001_src5_data),                       //          .data
 		.sink0_startofpacket (cmd_demux_001_src5_startofpacket),              //          .startofpacket
 		.sink0_endofpacket   (cmd_demux_001_src5_endofpacket),                //          .endofpacket
-		.sink1_ready         (cmd_demux_002_src0_ready),                      //     sink1.ready
-		.sink1_valid         (cmd_demux_002_src0_valid),                      //          .valid
-		.sink1_channel       (cmd_demux_002_src0_channel),                    //          .channel
-		.sink1_data          (cmd_demux_002_src0_data),                       //          .data
-		.sink1_startofpacket (cmd_demux_002_src0_startofpacket),              //          .startofpacket
-		.sink1_endofpacket   (cmd_demux_002_src0_endofpacket)                 //          .endofpacket
+		.sink1_ready         (cmd_demux_002_src2_ready),                      //     sink1.ready
+		.sink1_valid         (cmd_demux_002_src2_valid),                      //          .valid
+		.sink1_channel       (cmd_demux_002_src2_channel),                    //          .channel
+		.sink1_data          (cmd_demux_002_src2_data),                       //          .data
+		.sink1_startofpacket (cmd_demux_002_src2_startofpacket),              //          .startofpacket
+		.sink1_endofpacket   (cmd_demux_002_src2_endofpacket)                 //          .endofpacket
 	);
 
 	soc_system_mm_interconnect_2_cmd_mux_006 cmd_mux_006 (
@@ -3255,12 +3303,12 @@ module soc_system_mm_interconnect_2 (
 		.src_channel         (cmd_mux_006_src_channel),                       //          .channel
 		.src_startofpacket   (cmd_mux_006_src_startofpacket),                 //          .startofpacket
 		.src_endofpacket     (cmd_mux_006_src_endofpacket),                   //          .endofpacket
-		.sink0_ready         (cmd_demux_002_src1_ready),                      //     sink0.ready
-		.sink0_valid         (cmd_demux_002_src1_valid),                      //          .valid
-		.sink0_channel       (cmd_demux_002_src1_channel),                    //          .channel
-		.sink0_data          (cmd_demux_002_src1_data),                       //          .data
-		.sink0_startofpacket (cmd_demux_002_src1_startofpacket),              //          .startofpacket
-		.sink0_endofpacket   (cmd_demux_002_src1_endofpacket)                 //          .endofpacket
+		.sink0_ready         (cmd_demux_002_src3_ready),                      //     sink0.ready
+		.sink0_valid         (cmd_demux_002_src3_valid),                      //          .valid
+		.sink0_channel       (cmd_demux_002_src3_channel),                    //          .channel
+		.sink0_data          (cmd_demux_002_src3_data),                       //          .data
+		.sink0_startofpacket (cmd_demux_002_src3_startofpacket),              //          .startofpacket
+		.sink0_endofpacket   (cmd_demux_002_src3_endofpacket)                 //          .endofpacket
 	);
 
 	soc_system_mm_interconnect_2_cmd_mux_006 cmd_mux_007 (
@@ -3272,12 +3320,12 @@ module soc_system_mm_interconnect_2 (
 		.src_channel         (cmd_mux_007_src_channel),                       //          .channel
 		.src_startofpacket   (cmd_mux_007_src_startofpacket),                 //          .startofpacket
 		.src_endofpacket     (cmd_mux_007_src_endofpacket),                   //          .endofpacket
-		.sink0_ready         (cmd_demux_002_src2_ready),                      //     sink0.ready
-		.sink0_valid         (cmd_demux_002_src2_valid),                      //          .valid
-		.sink0_channel       (cmd_demux_002_src2_channel),                    //          .channel
-		.sink0_data          (cmd_demux_002_src2_data),                       //          .data
-		.sink0_startofpacket (cmd_demux_002_src2_startofpacket),              //          .startofpacket
-		.sink0_endofpacket   (cmd_demux_002_src2_endofpacket)                 //          .endofpacket
+		.sink0_ready         (cmd_demux_002_src4_ready),                      //     sink0.ready
+		.sink0_valid         (cmd_demux_002_src4_valid),                      //          .valid
+		.sink0_channel       (cmd_demux_002_src4_channel),                    //          .channel
+		.sink0_data          (cmd_demux_002_src4_data),                       //          .data
+		.sink0_startofpacket (cmd_demux_002_src4_startofpacket),              //          .startofpacket
+		.sink0_endofpacket   (cmd_demux_002_src4_endofpacket)                 //          .endofpacket
 	);
 
 	soc_system_mm_interconnect_2_rsp_demux rsp_demux (
@@ -3303,7 +3351,7 @@ module soc_system_mm_interconnect_2 (
 		.src1_endofpacket   (rsp_demux_src1_endofpacket)                     //          .endofpacket
 	);
 
-	soc_system_mm_interconnect_2_rsp_demux rsp_demux_001 (
+	soc_system_mm_interconnect_2_rsp_demux_001 rsp_demux_001 (
 		.clk                (clk_0_clk_clk),                                 //       clk.clk
 		.reset              (mm_bridge_0_reset_reset_bridge_in_reset_reset), // clk_reset.reset
 		.sink_ready         (router_004_src_ready),                          //      sink.ready
@@ -3323,10 +3371,16 @@ module soc_system_mm_interconnect_2 (
 		.src1_data          (rsp_demux_001_src1_data),                       //          .data
 		.src1_channel       (rsp_demux_001_src1_channel),                    //          .channel
 		.src1_startofpacket (rsp_demux_001_src1_startofpacket),              //          .startofpacket
-		.src1_endofpacket   (rsp_demux_001_src1_endofpacket)                 //          .endofpacket
+		.src1_endofpacket   (rsp_demux_001_src1_endofpacket),                //          .endofpacket
+		.src2_ready         (rsp_demux_001_src2_ready),                      //      src2.ready
+		.src2_valid         (rsp_demux_001_src2_valid),                      //          .valid
+		.src2_data          (rsp_demux_001_src2_data),                       //          .data
+		.src2_channel       (rsp_demux_001_src2_channel),                    //          .channel
+		.src2_startofpacket (rsp_demux_001_src2_startofpacket),              //          .startofpacket
+		.src2_endofpacket   (rsp_demux_001_src2_endofpacket)                 //          .endofpacket
 	);
 
-	soc_system_mm_interconnect_2_rsp_demux rsp_demux_002 (
+	soc_system_mm_interconnect_2_rsp_demux_001 rsp_demux_002 (
 		.clk                (clk_0_clk_clk),                                 //       clk.clk
 		.reset              (mm_bridge_0_reset_reset_bridge_in_reset_reset), // clk_reset.reset
 		.sink_ready         (router_005_src_ready),                          //      sink.ready
@@ -3346,7 +3400,13 @@ module soc_system_mm_interconnect_2 (
 		.src1_data          (rsp_demux_002_src1_data),                       //          .data
 		.src1_channel       (rsp_demux_002_src1_channel),                    //          .channel
 		.src1_startofpacket (rsp_demux_002_src1_startofpacket),              //          .startofpacket
-		.src1_endofpacket   (rsp_demux_002_src1_endofpacket)                 //          .endofpacket
+		.src1_endofpacket   (rsp_demux_002_src1_endofpacket),                //          .endofpacket
+		.src2_ready         (rsp_demux_002_src2_ready),                      //      src2.ready
+		.src2_valid         (rsp_demux_002_src2_valid),                      //          .valid
+		.src2_data          (rsp_demux_002_src2_data),                       //          .data
+		.src2_channel       (rsp_demux_002_src2_channel),                    //          .channel
+		.src2_startofpacket (rsp_demux_002_src2_startofpacket),              //          .startofpacket
+		.src2_endofpacket   (rsp_demux_002_src2_endofpacket)                 //          .endofpacket
 	);
 
 	soc_system_mm_interconnect_2_rsp_demux rsp_demux_003 (
@@ -3540,7 +3600,7 @@ module soc_system_mm_interconnect_2 (
 		.sink5_endofpacket   (rsp_demux_005_src0_endofpacket)                 //          .endofpacket
 	);
 
-	soc_system_mm_interconnect_2_rsp_mux_002 rsp_mux_002 (
+	soc_system_mm_interconnect_2_rsp_mux rsp_mux_002 (
 		.clk                 (clk_0_clk_clk),                                 //       clk.clk
 		.reset               (mm_bridge_0_reset_reset_bridge_in_reset_reset), // clk_reset.reset
 		.src_ready           (rsp_mux_002_src_ready),                         //       src.ready
@@ -3549,24 +3609,36 @@ module soc_system_mm_interconnect_2 (
 		.src_channel         (rsp_mux_002_src_channel),                       //          .channel
 		.src_startofpacket   (rsp_mux_002_src_startofpacket),                 //          .startofpacket
 		.src_endofpacket     (rsp_mux_002_src_endofpacket),                   //          .endofpacket
-		.sink0_ready         (rsp_demux_005_src1_ready),                      //     sink0.ready
-		.sink0_valid         (rsp_demux_005_src1_valid),                      //          .valid
-		.sink0_channel       (rsp_demux_005_src1_channel),                    //          .channel
-		.sink0_data          (rsp_demux_005_src1_data),                       //          .data
-		.sink0_startofpacket (rsp_demux_005_src1_startofpacket),              //          .startofpacket
-		.sink0_endofpacket   (rsp_demux_005_src1_endofpacket),                //          .endofpacket
-		.sink1_ready         (rsp_demux_006_src0_ready),                      //     sink1.ready
-		.sink1_valid         (rsp_demux_006_src0_valid),                      //          .valid
-		.sink1_channel       (rsp_demux_006_src0_channel),                    //          .channel
-		.sink1_data          (rsp_demux_006_src0_data),                       //          .data
-		.sink1_startofpacket (rsp_demux_006_src0_startofpacket),              //          .startofpacket
-		.sink1_endofpacket   (rsp_demux_006_src0_endofpacket),                //          .endofpacket
-		.sink2_ready         (rsp_demux_007_src0_ready),                      //     sink2.ready
-		.sink2_valid         (rsp_demux_007_src0_valid),                      //          .valid
-		.sink2_channel       (rsp_demux_007_src0_channel),                    //          .channel
-		.sink2_data          (rsp_demux_007_src0_data),                       //          .data
-		.sink2_startofpacket (rsp_demux_007_src0_startofpacket),              //          .startofpacket
-		.sink2_endofpacket   (rsp_demux_007_src0_endofpacket)                 //          .endofpacket
+		.sink0_ready         (rsp_demux_001_src2_ready),                      //     sink0.ready
+		.sink0_valid         (rsp_demux_001_src2_valid),                      //          .valid
+		.sink0_channel       (rsp_demux_001_src2_channel),                    //          .channel
+		.sink0_data          (rsp_demux_001_src2_data),                       //          .data
+		.sink0_startofpacket (rsp_demux_001_src2_startofpacket),              //          .startofpacket
+		.sink0_endofpacket   (rsp_demux_001_src2_endofpacket),                //          .endofpacket
+		.sink1_ready         (rsp_demux_002_src2_ready),                      //     sink1.ready
+		.sink1_valid         (rsp_demux_002_src2_valid),                      //          .valid
+		.sink1_channel       (rsp_demux_002_src2_channel),                    //          .channel
+		.sink1_data          (rsp_demux_002_src2_data),                       //          .data
+		.sink1_startofpacket (rsp_demux_002_src2_startofpacket),              //          .startofpacket
+		.sink1_endofpacket   (rsp_demux_002_src2_endofpacket),                //          .endofpacket
+		.sink2_ready         (rsp_demux_005_src1_ready),                      //     sink2.ready
+		.sink2_valid         (rsp_demux_005_src1_valid),                      //          .valid
+		.sink2_channel       (rsp_demux_005_src1_channel),                    //          .channel
+		.sink2_data          (rsp_demux_005_src1_data),                       //          .data
+		.sink2_startofpacket (rsp_demux_005_src1_startofpacket),              //          .startofpacket
+		.sink2_endofpacket   (rsp_demux_005_src1_endofpacket),                //          .endofpacket
+		.sink3_ready         (rsp_demux_006_src0_ready),                      //     sink3.ready
+		.sink3_valid         (rsp_demux_006_src0_valid),                      //          .valid
+		.sink3_channel       (rsp_demux_006_src0_channel),                    //          .channel
+		.sink3_data          (rsp_demux_006_src0_data),                       //          .data
+		.sink3_startofpacket (rsp_demux_006_src0_startofpacket),              //          .startofpacket
+		.sink3_endofpacket   (rsp_demux_006_src0_endofpacket),                //          .endofpacket
+		.sink4_ready         (rsp_demux_007_src0_ready),                      //     sink4.ready
+		.sink4_valid         (rsp_demux_007_src0_valid),                      //          .valid
+		.sink4_channel       (rsp_demux_007_src0_channel),                    //          .channel
+		.sink4_data          (rsp_demux_007_src0_data),                       //          .data
+		.sink4_startofpacket (rsp_demux_007_src0_startofpacket),              //          .startofpacket
+		.sink4_endofpacket   (rsp_demux_007_src0_endofpacket)                 //          .endofpacket
 	);
 
 	soc_system_mm_interconnect_0_avalon_st_adapter #(

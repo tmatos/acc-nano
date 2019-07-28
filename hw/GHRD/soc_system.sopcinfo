@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <EnsembleReport name="soc_system" kind="soc_system" version="1.0" fabric="QSYS">
  <!-- Format version 18.1 646 (Future versions may contain additional information.) -->
- <!-- 2019.07.28.01:32:10 -->
+ <!-- 2019.07.28.02:50:49 -->
  <!-- A collection of modules and connections -->
  <parameter name="AUTO_GENERATION_ID">
   <type>java.lang.Integer</type>
-  <value>1564288298</value>
+  <value>1564292997</value>
   <derived>false</derived>
   <enabled>true</enabled>
   <visible>false</visible>
@@ -20449,7 +20449,23 @@ parameters are a RESULT of the module parameters. -->
     <slaveName>s0</slaveName>
     <name>mm_bridge_1.s0</name>
     <baseAddress>0</baseAddress>
-    <span>16384</span>
+    <span>262144</span>
+   </memoryBlock>
+   <memoryBlock>
+    <isBridge>false</isBridge>
+    <moduleName>ILC</moduleName>
+    <slaveName>avalon_slave</slaveName>
+    <name>ILC.avalon_slave</name>
+    <baseAddress>196608</baseAddress>
+    <span>256</span>
+   </memoryBlock>
+   <memoryBlock>
+    <isBridge>false</isBridge>
+    <moduleName>sysid_qsys</moduleName>
+    <slaveName>control_slave</slaveName>
+    <name>sysid_qsys.control_slave</name>
+    <baseAddress>4096</baseAddress>
+    <span>8</span>
    </memoryBlock>
    <memoryBlock>
     <isBridge>false</isBridge>
@@ -47810,7 +47826,23 @@ parameters are a RESULT of the module parameters. -->
     <slaveName>s0</slaveName>
     <name>mm_bridge_1.s0</name>
     <baseAddress>0</baseAddress>
-    <span>16384</span>
+    <span>262144</span>
+   </memoryBlock>
+   <memoryBlock>
+    <isBridge>false</isBridge>
+    <moduleName>ILC</moduleName>
+    <slaveName>avalon_slave</slaveName>
+    <name>ILC.avalon_slave</name>
+    <baseAddress>196608</baseAddress>
+    <span>256</span>
+   </memoryBlock>
+   <memoryBlock>
+    <isBridge>false</isBridge>
+    <moduleName>sysid_qsys</moduleName>
+    <slaveName>control_slave</slaveName>
+    <name>sysid_qsys.control_slave</name>
+    <baseAddress>4096</baseAddress>
+    <span>8</span>
    </memoryBlock>
    <memoryBlock>
     <isBridge>false</isBridge>
@@ -50207,7 +50239,23 @@ parameters are a RESULT of the module parameters. -->
     <slaveName>s0</slaveName>
     <name>mm_bridge_1.s0</name>
     <baseAddress>3221225472</baseAddress>
-    <span>16384</span>
+    <span>262144</span>
+   </memoryBlock>
+   <memoryBlock>
+    <isBridge>false</isBridge>
+    <moduleName>ILC</moduleName>
+    <slaveName>avalon_slave</slaveName>
+    <name>ILC.avalon_slave</name>
+    <baseAddress>3221422080</baseAddress>
+    <span>256</span>
+   </memoryBlock>
+   <memoryBlock>
+    <isBridge>false</isBridge>
+    <moduleName>sysid_qsys</moduleName>
+    <slaveName>control_slave</slaveName>
+    <name>sysid_qsys.control_slave</name>
+    <baseAddress>3221229568</baseAddress>
+    <span>8</span>
    </memoryBlock>
    <memoryBlock>
     <isBridge>false</isBridge>
@@ -51110,7 +51158,23 @@ parameters are a RESULT of the module parameters. -->
     <slaveName>s0</slaveName>
     <name>mm_bridge_1.s0</name>
     <baseAddress>3221225472</baseAddress>
-    <span>16384</span>
+    <span>262144</span>
+   </memoryBlock>
+   <memoryBlock>
+    <isBridge>false</isBridge>
+    <moduleName>ILC</moduleName>
+    <slaveName>avalon_slave</slaveName>
+    <name>ILC.avalon_slave</name>
+    <baseAddress>3221422080</baseAddress>
+    <span>256</span>
+   </memoryBlock>
+   <memoryBlock>
+    <isBridge>false</isBridge>
+    <moduleName>sysid_qsys</moduleName>
+    <slaveName>control_slave</slaveName>
+    <name>sysid_qsys.control_slave</name>
+    <baseAddress>3221229568</baseAddress>
+    <span>8</span>
    </memoryBlock>
    <memoryBlock>
     <isBridge>false</isBridge>
@@ -82248,7 +82312,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="SYSINFO_ADDR_WIDTH">
    <type>int</type>
-   <value>14</value>
+   <value>18</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -82266,7 +82330,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="AUTO_ADDRESS_WIDTH">
    <type>int</type>
-   <value>14</value>
+   <value>18</value>
    <derived>true</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -82274,7 +82338,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="HDL_ADDR_WIDTH">
    <type>int</type>
-   <value>14</value>
+   <value>18</value>
    <derived>true</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -82484,7 +82548,7 @@ parameters are a RESULT of the module parameters. -->
    </parameter>
    <parameter name="addressSpan">
     <type>java.math.BigInteger</type>
-    <value>16384</value>
+    <value>262144</value>
     <derived>true</derived>
     <enabled>true</enabled>
     <visible>false</visible>
@@ -82813,7 +82877,7 @@ parameters are a RESULT of the module parameters. -->
    <port>
     <name>s0_address</name>
     <direction>Input</direction>
-    <width>14</width>
+    <width>18</width>
     <role>address</role>
    </port>
    <port>
@@ -83136,7 +83200,7 @@ parameters are a RESULT of the module parameters. -->
    <port>
     <name>m0_address</name>
     <direction>Output</direction>
-    <width>14</width>
+    <width>18</width>
     <role>address</role>
    </port>
    <port>
@@ -83163,6 +83227,22 @@ parameters are a RESULT of the module parameters. -->
     <width>1</width>
     <role>debugaccess</role>
    </port>
+   <memoryBlock>
+    <isBridge>false</isBridge>
+    <moduleName>ILC</moduleName>
+    <slaveName>avalon_slave</slaveName>
+    <name>ILC.avalon_slave</name>
+    <baseAddress>196608</baseAddress>
+    <span>256</span>
+   </memoryBlock>
+   <memoryBlock>
+    <isBridge>false</isBridge>
+    <moduleName>sysid_qsys</moduleName>
+    <slaveName>control_slave</slaveName>
+    <name>sysid_qsys.control_slave</name>
+    <baseAddress>4096</baseAddress>
+    <span>8</span>
+   </memoryBlock>
    <memoryBlock>
     <isBridge>false</isBridge>
     <moduleName>pio_controle</moduleName>
@@ -84854,7 +84934,7 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.TIMESTAMP</name>
-   <value>1564288298</value>
+   <value>1564292997</value>
   </assignment>
   <assignment>
    <name>embeddedsw.dts.compatible</name>
@@ -84874,7 +84954,7 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.dts.params.timestamp</name>
-   <value>1564288298</value>
+   <value>1564292997</value>
   </assignment>
   <assignment>
    <name>embeddedsw.dts.vendor</name>
@@ -84890,7 +84970,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="timestamp">
    <type>int</type>
-   <value>1564288298</value>
+   <value>1564292997</value>
    <derived>true</derived>
    <enabled>false</enabled>
    <visible>false</visible>
@@ -95678,6 +95758,57 @@ parameters are a RESULT of the module parameters. -->
   <endConnectionPoint>avalon_slave</endConnectionPoint>
  </connection>
  <connection
+   name="mm_bridge_1.m0/ILC.avalon_slave"
+   kind="avalon"
+   version="18.1"
+   start="mm_bridge_1.m0"
+   end="ILC.avalon_slave">
+  <parameter name="arbitrationPriority">
+   <type>int</type>
+   <value>1</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="baseAddress">
+   <type>java.math.BigInteger</type>
+   <value>0x00030000</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="defaultConnection">
+   <type>boolean</type>
+   <value>false</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="deviceFamily">
+   <type>java.lang.String</type>
+   <value>UNKNOWN</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="generateLegacySim">
+   <type>boolean</type>
+   <value>false</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <startModule>mm_bridge_1</startModule>
+  <startConnectionPoint>m0</startConnectionPoint>
+  <endModule>ILC</endModule>
+  <endConnectionPoint>avalon_slave</endConnectionPoint>
+ </connection>
+ <connection
    name="mm_bridge_0.m0/sysid_qsys.control_slave"
    kind="avalon"
    version="18.1"
@@ -95724,6 +95855,57 @@ parameters are a RESULT of the module parameters. -->
    <valid>true</valid>
   </parameter>
   <startModule>mm_bridge_0</startModule>
+  <startConnectionPoint>m0</startConnectionPoint>
+  <endModule>sysid_qsys</endModule>
+  <endConnectionPoint>control_slave</endConnectionPoint>
+ </connection>
+ <connection
+   name="mm_bridge_1.m0/sysid_qsys.control_slave"
+   kind="avalon"
+   version="18.1"
+   start="mm_bridge_1.m0"
+   end="sysid_qsys.control_slave">
+  <parameter name="arbitrationPriority">
+   <type>int</type>
+   <value>1</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="baseAddress">
+   <type>java.math.BigInteger</type>
+   <value>0x1000</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="defaultConnection">
+   <type>boolean</type>
+   <value>false</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="deviceFamily">
+   <type>java.lang.String</type>
+   <value>UNKNOWN</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="generateLegacySim">
+   <type>boolean</type>
+   <value>false</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <startModule>mm_bridge_1</startModule>
   <startConnectionPoint>m0</startConnectionPoint>
   <endModule>sysid_qsys</endModule>
   <endConnectionPoint>control_slave</endConnectionPoint>
@@ -97938,7 +98120,7 @@ parameters are a RESULT of the module parameters. -->
   <version>18.1</version>
  </plugin>
  <plugin>
-  <instanceCount>148</instanceCount>
+  <instanceCount>150</instanceCount>
   <name>avalon</name>
   <type>com.altera.entityinterfaces.IElementClass</type>
   <subtype>com.altera.entityinterfaces.IConnection</subtype>
