@@ -12,8 +12,11 @@ CC = $(CROSS_COMPILE)gcc
 ARCH= arm
 
 build: $(TARGET)
+	scp $(TARGET) root@192.168.7.1:/home/root
+
 $(TARGET): main.o 
-	$(CC) $(LDFLAGS)   $^ -o $@  
+	$(CC) $(LDFLAGS)   $^ -o $@
+
 %.o : %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
