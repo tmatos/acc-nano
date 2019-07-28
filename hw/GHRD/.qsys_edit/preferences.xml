@@ -8,8 +8,9 @@
    <name preferredWidth="182" />
    <export preferredWidth="200" />
    <description preferredWidth="223" />
+   <inputclock preferredWidth="120" />
   </columns>
  </systemtable>
- <library expandedCategories="Library,Project" />
+ <library expandedCategories="Project,Library" />
  <window width="1372" height="742" x="-3" y="0" />
 </preferences>
