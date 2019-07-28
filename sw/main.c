@@ -18,6 +18,8 @@
 #define HW_REGS_SPAN ( 0x04000000 )
 #define HW_REGS_MASK ( HW_REGS_SPAN - 1 )
 
+#define ALT_FPGASLVS_OFST ( 0xC0000000 )  // FPGA slaves (ref.: cyclone v doc)
+
 int main() {
 
 	void *virtual_base;
@@ -26,6 +28,7 @@ int main() {
 	int led_direction;
 	int led_mask;
 	void *h2p_led_addr;
+	void *h2p_controle_addr;
 
 	// map the address space for the LED registers into user space so we can interact with them.
 	// we'll actually map in the entire CSR span of the HPS since we want to access various registers within that span
@@ -42,10 +45,8 @@ int main() {
 		close( fd );
 		return( 1 );
 	}
-
-	printf("FPGA slaves: %#010x \n", (unsigned long) (HW_REGS_BASE + ALT_FPGASLVS_OFST) ); // debug
 	
-	h2p_led_addr = virtual_base + ( ( unsigned long  )( ALT_FPGASLVS_OFST + LED_PIO_BASE ) & ( unsigned long)( HW_REGS_MASK ) );
+	h2p_led_addr = virtual_base + ( ( unsigned long  )( ALT_LWFPGASLVS_OFST + LED_PIO_BASE ) & ( unsigned long)( HW_REGS_MASK ) );
 	
 
 	// toggle the LEDs a bit
@@ -53,7 +54,7 @@ int main() {
 	loop_count = 0;
 	led_mask = 0x01;
 	led_direction = 0; // 0: left to right direction
-	while( loop_count < 60 ) {
+	while( loop_count < 5 ) {
 		
 		// control led
 		*(uint32_t *)h2p_led_addr = ~led_mask; 
@@ -74,7 +75,16 @@ int main() {
 			}
 		}
 	}
-	
+
+
+	// parte no heavy axi bus
+
+	printf("FPGA slaves: %#010x \n", (unsigned long) (HW_REGS_BASE + ALT_FPGASLVS_OFST) ); // debug
+
+	h2p_controle_addr = virtual_base + ( ( unsigned long  )( ALT_FPGASLVS_OFST + PIO_CONTROLE_BASE ) & ( unsigned long)( HW_REGS_MASK ) );
+
+	// escreve o controle
+	*(uint32_t *)h2p_controle_addr = 1988; 
 
 	// clean up our memory mapping and exit
 	
