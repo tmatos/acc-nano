@@ -55,13 +55,13 @@ module soc_system_mm_interconnect_1 (
 		input  wire [31:0] led_pio_s1_readdata,                                    //                                                 .readdata
 		output wire [31:0] led_pio_s1_writedata,                                   //                                                 .writedata
 		output wire        led_pio_s1_chipselect,                                  //                                                 .chipselect
-		output wire [9:0]  onchip_memory2_0_s1_address,                            //                              onchip_memory2_0_s1.address
-		output wire        onchip_memory2_0_s1_write,                              //                                                 .write
-		input  wire [31:0] onchip_memory2_0_s1_readdata,                           //                                                 .readdata
-		output wire [31:0] onchip_memory2_0_s1_writedata,                          //                                                 .writedata
-		output wire [3:0]  onchip_memory2_0_s1_byteenable,                         //                                                 .byteenable
-		output wire        onchip_memory2_0_s1_chipselect,                         //                                                 .chipselect
-		output wire        onchip_memory2_0_s1_clken,                              //                                                 .clken
+		output wire [9:0]  onchip_ram_s1_address,                                  //                                    onchip_ram_s1.address
+		output wire        onchip_ram_s1_write,                                    //                                                 .write
+		input  wire [31:0] onchip_ram_s1_readdata,                                 //                                                 .readdata
+		output wire [31:0] onchip_ram_s1_writedata,                                //                                                 .writedata
+		output wire [3:0]  onchip_ram_s1_byteenable,                               //                                                 .byteenable
+		output wire        onchip_ram_s1_chipselect,                               //                                                 .chipselect
+		output wire        onchip_ram_s1_clken,                                    //                                                 .clken
 		output wire [1:0]  pio_controle_s1_address,                                //                                  pio_controle_s1.address
 		output wire        pio_controle_s1_write,                                  //                                                 .write
 		input  wire [31:0] pio_controle_s1_readdata,                               //                                                 .readdata
@@ -255,33 +255,33 @@ module soc_system_mm_interconnect_1 (
 	wire    [7:0] cmd_mux_005_src_channel;                                                    // cmd_mux_005:src_channel -> button_pio_s1_agent:cp_channel
 	wire          cmd_mux_005_src_startofpacket;                                              // cmd_mux_005:src_startofpacket -> button_pio_s1_agent:cp_startofpacket
 	wire          cmd_mux_005_src_endofpacket;                                                // cmd_mux_005:src_endofpacket -> button_pio_s1_agent:cp_endofpacket
-	wire   [31:0] onchip_memory2_0_s1_agent_m0_readdata;                                      // onchip_memory2_0_s1_translator:uav_readdata -> onchip_memory2_0_s1_agent:m0_readdata
-	wire          onchip_memory2_0_s1_agent_m0_waitrequest;                                   // onchip_memory2_0_s1_translator:uav_waitrequest -> onchip_memory2_0_s1_agent:m0_waitrequest
-	wire          onchip_memory2_0_s1_agent_m0_debugaccess;                                   // onchip_memory2_0_s1_agent:m0_debugaccess -> onchip_memory2_0_s1_translator:uav_debugaccess
-	wire   [31:0] onchip_memory2_0_s1_agent_m0_address;                                       // onchip_memory2_0_s1_agent:m0_address -> onchip_memory2_0_s1_translator:uav_address
-	wire    [3:0] onchip_memory2_0_s1_agent_m0_byteenable;                                    // onchip_memory2_0_s1_agent:m0_byteenable -> onchip_memory2_0_s1_translator:uav_byteenable
-	wire          onchip_memory2_0_s1_agent_m0_read;                                          // onchip_memory2_0_s1_agent:m0_read -> onchip_memory2_0_s1_translator:uav_read
-	wire          onchip_memory2_0_s1_agent_m0_readdatavalid;                                 // onchip_memory2_0_s1_translator:uav_readdatavalid -> onchip_memory2_0_s1_agent:m0_readdatavalid
-	wire          onchip_memory2_0_s1_agent_m0_lock;                                          // onchip_memory2_0_s1_agent:m0_lock -> onchip_memory2_0_s1_translator:uav_lock
-	wire   [31:0] onchip_memory2_0_s1_agent_m0_writedata;                                     // onchip_memory2_0_s1_agent:m0_writedata -> onchip_memory2_0_s1_translator:uav_writedata
-	wire          onchip_memory2_0_s1_agent_m0_write;                                         // onchip_memory2_0_s1_agent:m0_write -> onchip_memory2_0_s1_translator:uav_write
-	wire    [2:0] onchip_memory2_0_s1_agent_m0_burstcount;                                    // onchip_memory2_0_s1_agent:m0_burstcount -> onchip_memory2_0_s1_translator:uav_burstcount
-	wire          onchip_memory2_0_s1_agent_rf_source_valid;                                  // onchip_memory2_0_s1_agent:rf_source_valid -> onchip_memory2_0_s1_agent_rsp_fifo:in_valid
-	wire  [106:0] onchip_memory2_0_s1_agent_rf_source_data;                                   // onchip_memory2_0_s1_agent:rf_source_data -> onchip_memory2_0_s1_agent_rsp_fifo:in_data
-	wire          onchip_memory2_0_s1_agent_rf_source_ready;                                  // onchip_memory2_0_s1_agent_rsp_fifo:in_ready -> onchip_memory2_0_s1_agent:rf_source_ready
-	wire          onchip_memory2_0_s1_agent_rf_source_startofpacket;                          // onchip_memory2_0_s1_agent:rf_source_startofpacket -> onchip_memory2_0_s1_agent_rsp_fifo:in_startofpacket
-	wire          onchip_memory2_0_s1_agent_rf_source_endofpacket;                            // onchip_memory2_0_s1_agent:rf_source_endofpacket -> onchip_memory2_0_s1_agent_rsp_fifo:in_endofpacket
-	wire          onchip_memory2_0_s1_agent_rsp_fifo_out_valid;                               // onchip_memory2_0_s1_agent_rsp_fifo:out_valid -> onchip_memory2_0_s1_agent:rf_sink_valid
-	wire  [106:0] onchip_memory2_0_s1_agent_rsp_fifo_out_data;                                // onchip_memory2_0_s1_agent_rsp_fifo:out_data -> onchip_memory2_0_s1_agent:rf_sink_data
-	wire          onchip_memory2_0_s1_agent_rsp_fifo_out_ready;                               // onchip_memory2_0_s1_agent:rf_sink_ready -> onchip_memory2_0_s1_agent_rsp_fifo:out_ready
-	wire          onchip_memory2_0_s1_agent_rsp_fifo_out_startofpacket;                       // onchip_memory2_0_s1_agent_rsp_fifo:out_startofpacket -> onchip_memory2_0_s1_agent:rf_sink_startofpacket
-	wire          onchip_memory2_0_s1_agent_rsp_fifo_out_endofpacket;                         // onchip_memory2_0_s1_agent_rsp_fifo:out_endofpacket -> onchip_memory2_0_s1_agent:rf_sink_endofpacket
-	wire          cmd_mux_006_src_valid;                                                      // cmd_mux_006:src_valid -> onchip_memory2_0_s1_agent:cp_valid
-	wire  [105:0] cmd_mux_006_src_data;                                                       // cmd_mux_006:src_data -> onchip_memory2_0_s1_agent:cp_data
-	wire          cmd_mux_006_src_ready;                                                      // onchip_memory2_0_s1_agent:cp_ready -> cmd_mux_006:src_ready
-	wire    [7:0] cmd_mux_006_src_channel;                                                    // cmd_mux_006:src_channel -> onchip_memory2_0_s1_agent:cp_channel
-	wire          cmd_mux_006_src_startofpacket;                                              // cmd_mux_006:src_startofpacket -> onchip_memory2_0_s1_agent:cp_startofpacket
-	wire          cmd_mux_006_src_endofpacket;                                                // cmd_mux_006:src_endofpacket -> onchip_memory2_0_s1_agent:cp_endofpacket
+	wire   [31:0] onchip_ram_s1_agent_m0_readdata;                                            // onchip_ram_s1_translator:uav_readdata -> onchip_ram_s1_agent:m0_readdata
+	wire          onchip_ram_s1_agent_m0_waitrequest;                                         // onchip_ram_s1_translator:uav_waitrequest -> onchip_ram_s1_agent:m0_waitrequest
+	wire          onchip_ram_s1_agent_m0_debugaccess;                                         // onchip_ram_s1_agent:m0_debugaccess -> onchip_ram_s1_translator:uav_debugaccess
+	wire   [31:0] onchip_ram_s1_agent_m0_address;                                             // onchip_ram_s1_agent:m0_address -> onchip_ram_s1_translator:uav_address
+	wire    [3:0] onchip_ram_s1_agent_m0_byteenable;                                          // onchip_ram_s1_agent:m0_byteenable -> onchip_ram_s1_translator:uav_byteenable
+	wire          onchip_ram_s1_agent_m0_read;                                                // onchip_ram_s1_agent:m0_read -> onchip_ram_s1_translator:uav_read
+	wire          onchip_ram_s1_agent_m0_readdatavalid;                                       // onchip_ram_s1_translator:uav_readdatavalid -> onchip_ram_s1_agent:m0_readdatavalid
+	wire          onchip_ram_s1_agent_m0_lock;                                                // onchip_ram_s1_agent:m0_lock -> onchip_ram_s1_translator:uav_lock
+	wire   [31:0] onchip_ram_s1_agent_m0_writedata;                                           // onchip_ram_s1_agent:m0_writedata -> onchip_ram_s1_translator:uav_writedata
+	wire          onchip_ram_s1_agent_m0_write;                                               // onchip_ram_s1_agent:m0_write -> onchip_ram_s1_translator:uav_write
+	wire    [2:0] onchip_ram_s1_agent_m0_burstcount;                                          // onchip_ram_s1_agent:m0_burstcount -> onchip_ram_s1_translator:uav_burstcount
+	wire          onchip_ram_s1_agent_rf_source_valid;                                        // onchip_ram_s1_agent:rf_source_valid -> onchip_ram_s1_agent_rsp_fifo:in_valid
+	wire  [106:0] onchip_ram_s1_agent_rf_source_data;                                         // onchip_ram_s1_agent:rf_source_data -> onchip_ram_s1_agent_rsp_fifo:in_data
+	wire          onchip_ram_s1_agent_rf_source_ready;                                        // onchip_ram_s1_agent_rsp_fifo:in_ready -> onchip_ram_s1_agent:rf_source_ready
+	wire          onchip_ram_s1_agent_rf_source_startofpacket;                                // onchip_ram_s1_agent:rf_source_startofpacket -> onchip_ram_s1_agent_rsp_fifo:in_startofpacket
+	wire          onchip_ram_s1_agent_rf_source_endofpacket;                                  // onchip_ram_s1_agent:rf_source_endofpacket -> onchip_ram_s1_agent_rsp_fifo:in_endofpacket
+	wire          onchip_ram_s1_agent_rsp_fifo_out_valid;                                     // onchip_ram_s1_agent_rsp_fifo:out_valid -> onchip_ram_s1_agent:rf_sink_valid
+	wire  [106:0] onchip_ram_s1_agent_rsp_fifo_out_data;                                      // onchip_ram_s1_agent_rsp_fifo:out_data -> onchip_ram_s1_agent:rf_sink_data
+	wire          onchip_ram_s1_agent_rsp_fifo_out_ready;                                     // onchip_ram_s1_agent:rf_sink_ready -> onchip_ram_s1_agent_rsp_fifo:out_ready
+	wire          onchip_ram_s1_agent_rsp_fifo_out_startofpacket;                             // onchip_ram_s1_agent_rsp_fifo:out_startofpacket -> onchip_ram_s1_agent:rf_sink_startofpacket
+	wire          onchip_ram_s1_agent_rsp_fifo_out_endofpacket;                               // onchip_ram_s1_agent_rsp_fifo:out_endofpacket -> onchip_ram_s1_agent:rf_sink_endofpacket
+	wire          cmd_mux_006_src_valid;                                                      // cmd_mux_006:src_valid -> onchip_ram_s1_agent:cp_valid
+	wire  [105:0] cmd_mux_006_src_data;                                                       // cmd_mux_006:src_data -> onchip_ram_s1_agent:cp_data
+	wire          cmd_mux_006_src_ready;                                                      // onchip_ram_s1_agent:cp_ready -> cmd_mux_006:src_ready
+	wire    [7:0] cmd_mux_006_src_channel;                                                    // cmd_mux_006:src_channel -> onchip_ram_s1_agent:cp_channel
+	wire          cmd_mux_006_src_startofpacket;                                              // cmd_mux_006:src_startofpacket -> onchip_ram_s1_agent:cp_startofpacket
+	wire          cmd_mux_006_src_endofpacket;                                                // cmd_mux_006:src_endofpacket -> onchip_ram_s1_agent:cp_endofpacket
 	wire   [31:0] pio_controle_s1_agent_m0_readdata;                                          // pio_controle_s1_translator:uav_readdata -> pio_controle_s1_agent:m0_readdata
 	wire          pio_controle_s1_agent_m0_waitrequest;                                       // pio_controle_s1_translator:uav_waitrequest -> pio_controle_s1_agent:m0_waitrequest
 	wire          pio_controle_s1_agent_m0_debugaccess;                                       // pio_controle_s1_agent:m0_debugaccess -> pio_controle_s1_translator:uav_debugaccess
@@ -385,11 +385,11 @@ module soc_system_mm_interconnect_1 (
 	wire    [7:0] router_007_src_channel;                                                     // router_007:src_channel -> rsp_demux_005:sink_channel
 	wire          router_007_src_startofpacket;                                               // router_007:src_startofpacket -> rsp_demux_005:sink_startofpacket
 	wire          router_007_src_endofpacket;                                                 // router_007:src_endofpacket -> rsp_demux_005:sink_endofpacket
-	wire          onchip_memory2_0_s1_agent_rp_valid;                                         // onchip_memory2_0_s1_agent:rp_valid -> router_008:sink_valid
-	wire  [105:0] onchip_memory2_0_s1_agent_rp_data;                                          // onchip_memory2_0_s1_agent:rp_data -> router_008:sink_data
-	wire          onchip_memory2_0_s1_agent_rp_ready;                                         // router_008:sink_ready -> onchip_memory2_0_s1_agent:rp_ready
-	wire          onchip_memory2_0_s1_agent_rp_startofpacket;                                 // onchip_memory2_0_s1_agent:rp_startofpacket -> router_008:sink_startofpacket
-	wire          onchip_memory2_0_s1_agent_rp_endofpacket;                                   // onchip_memory2_0_s1_agent:rp_endofpacket -> router_008:sink_endofpacket
+	wire          onchip_ram_s1_agent_rp_valid;                                               // onchip_ram_s1_agent:rp_valid -> router_008:sink_valid
+	wire  [105:0] onchip_ram_s1_agent_rp_data;                                                // onchip_ram_s1_agent:rp_data -> router_008:sink_data
+	wire          onchip_ram_s1_agent_rp_ready;                                               // router_008:sink_ready -> onchip_ram_s1_agent:rp_ready
+	wire          onchip_ram_s1_agent_rp_startofpacket;                                       // onchip_ram_s1_agent:rp_startofpacket -> router_008:sink_startofpacket
+	wire          onchip_ram_s1_agent_rp_endofpacket;                                         // onchip_ram_s1_agent:rp_endofpacket -> router_008:sink_endofpacket
 	wire          router_008_src_valid;                                                       // router_008:src_valid -> rsp_demux_006:sink_valid
 	wire  [105:0] router_008_src_data;                                                        // router_008:src_data -> rsp_demux_006:sink_data
 	wire          router_008_src_ready;                                                       // rsp_demux_006:sink_ready -> router_008:src_ready
@@ -665,13 +665,13 @@ module soc_system_mm_interconnect_1 (
 	wire   [33:0] avalon_st_adapter_005_out_0_data;                                           // avalon_st_adapter_005:out_0_data -> button_pio_s1_agent:rdata_fifo_sink_data
 	wire          avalon_st_adapter_005_out_0_ready;                                          // button_pio_s1_agent:rdata_fifo_sink_ready -> avalon_st_adapter_005:out_0_ready
 	wire    [0:0] avalon_st_adapter_005_out_0_error;                                          // avalon_st_adapter_005:out_0_error -> button_pio_s1_agent:rdata_fifo_sink_error
-	wire          onchip_memory2_0_s1_agent_rdata_fifo_src_valid;                             // onchip_memory2_0_s1_agent:rdata_fifo_src_valid -> avalon_st_adapter_006:in_0_valid
-	wire   [33:0] onchip_memory2_0_s1_agent_rdata_fifo_src_data;                              // onchip_memory2_0_s1_agent:rdata_fifo_src_data -> avalon_st_adapter_006:in_0_data
-	wire          onchip_memory2_0_s1_agent_rdata_fifo_src_ready;                             // avalon_st_adapter_006:in_0_ready -> onchip_memory2_0_s1_agent:rdata_fifo_src_ready
-	wire          avalon_st_adapter_006_out_0_valid;                                          // avalon_st_adapter_006:out_0_valid -> onchip_memory2_0_s1_agent:rdata_fifo_sink_valid
-	wire   [33:0] avalon_st_adapter_006_out_0_data;                                           // avalon_st_adapter_006:out_0_data -> onchip_memory2_0_s1_agent:rdata_fifo_sink_data
-	wire          avalon_st_adapter_006_out_0_ready;                                          // onchip_memory2_0_s1_agent:rdata_fifo_sink_ready -> avalon_st_adapter_006:out_0_ready
-	wire    [0:0] avalon_st_adapter_006_out_0_error;                                          // avalon_st_adapter_006:out_0_error -> onchip_memory2_0_s1_agent:rdata_fifo_sink_error
+	wire          onchip_ram_s1_agent_rdata_fifo_src_valid;                                   // onchip_ram_s1_agent:rdata_fifo_src_valid -> avalon_st_adapter_006:in_0_valid
+	wire   [33:0] onchip_ram_s1_agent_rdata_fifo_src_data;                                    // onchip_ram_s1_agent:rdata_fifo_src_data -> avalon_st_adapter_006:in_0_data
+	wire          onchip_ram_s1_agent_rdata_fifo_src_ready;                                   // avalon_st_adapter_006:in_0_ready -> onchip_ram_s1_agent:rdata_fifo_src_ready
+	wire          avalon_st_adapter_006_out_0_valid;                                          // avalon_st_adapter_006:out_0_valid -> onchip_ram_s1_agent:rdata_fifo_sink_valid
+	wire   [33:0] avalon_st_adapter_006_out_0_data;                                           // avalon_st_adapter_006:out_0_data -> onchip_ram_s1_agent:rdata_fifo_sink_data
+	wire          avalon_st_adapter_006_out_0_ready;                                          // onchip_ram_s1_agent:rdata_fifo_sink_ready -> avalon_st_adapter_006:out_0_ready
+	wire    [0:0] avalon_st_adapter_006_out_0_error;                                          // avalon_st_adapter_006:out_0_error -> onchip_ram_s1_agent:rdata_fifo_sink_error
 	wire          pio_controle_s1_agent_rdata_fifo_src_valid;                                 // pio_controle_s1_agent:rdata_fifo_src_valid -> avalon_st_adapter_007:in_0_valid
 	wire   [33:0] pio_controle_s1_agent_rdata_fifo_src_data;                                  // pio_controle_s1_agent:rdata_fifo_src_data -> avalon_st_adapter_007:in_0_data
 	wire          pio_controle_s1_agent_rdata_fifo_src_ready;                                 // avalon_st_adapter_007:in_0_ready -> pio_controle_s1_agent:rdata_fifo_src_ready
@@ -1210,27 +1210,27 @@ module soc_system_mm_interconnect_1 (
 		.AV_WRITE_WAIT_CYCLES           (0),
 		.AV_SETUP_WAIT_CYCLES           (0),
 		.AV_DATA_HOLD_CYCLES            (0)
-	) onchip_memory2_0_s1_translator (
+	) onchip_ram_s1_translator (
 		.clk                    (clk_0_clk_clk),                                 //                      clk.clk
 		.reset                  (mm_bridge_0_reset_reset_bridge_in_reset_reset), //                    reset.reset
-		.uav_address            (onchip_memory2_0_s1_agent_m0_address),          // avalon_universal_slave_0.address
-		.uav_burstcount         (onchip_memory2_0_s1_agent_m0_burstcount),       //                         .burstcount
-		.uav_read               (onchip_memory2_0_s1_agent_m0_read),             //                         .read
-		.uav_write              (onchip_memory2_0_s1_agent_m0_write),            //                         .write
-		.uav_waitrequest        (onchip_memory2_0_s1_agent_m0_waitrequest),      //                         .waitrequest
-		.uav_readdatavalid      (onchip_memory2_0_s1_agent_m0_readdatavalid),    //                         .readdatavalid
-		.uav_byteenable         (onchip_memory2_0_s1_agent_m0_byteenable),       //                         .byteenable
-		.uav_readdata           (onchip_memory2_0_s1_agent_m0_readdata),         //                         .readdata
-		.uav_writedata          (onchip_memory2_0_s1_agent_m0_writedata),        //                         .writedata
-		.uav_lock               (onchip_memory2_0_s1_agent_m0_lock),             //                         .lock
-		.uav_debugaccess        (onchip_memory2_0_s1_agent_m0_debugaccess),      //                         .debugaccess
-		.av_address             (onchip_memory2_0_s1_address),                   //      avalon_anti_slave_0.address
-		.av_write               (onchip_memory2_0_s1_write),                     //                         .write
-		.av_readdata            (onchip_memory2_0_s1_readdata),                  //                         .readdata
-		.av_writedata           (onchip_memory2_0_s1_writedata),                 //                         .writedata
-		.av_byteenable          (onchip_memory2_0_s1_byteenable),                //                         .byteenable
-		.av_chipselect          (onchip_memory2_0_s1_chipselect),                //                         .chipselect
-		.av_clken               (onchip_memory2_0_s1_clken),                     //                         .clken
+		.uav_address            (onchip_ram_s1_agent_m0_address),                // avalon_universal_slave_0.address
+		.uav_burstcount         (onchip_ram_s1_agent_m0_burstcount),             //                         .burstcount
+		.uav_read               (onchip_ram_s1_agent_m0_read),                   //                         .read
+		.uav_write              (onchip_ram_s1_agent_m0_write),                  //                         .write
+		.uav_waitrequest        (onchip_ram_s1_agent_m0_waitrequest),            //                         .waitrequest
+		.uav_readdatavalid      (onchip_ram_s1_agent_m0_readdatavalid),          //                         .readdatavalid
+		.uav_byteenable         (onchip_ram_s1_agent_m0_byteenable),             //                         .byteenable
+		.uav_readdata           (onchip_ram_s1_agent_m0_readdata),               //                         .readdata
+		.uav_writedata          (onchip_ram_s1_agent_m0_writedata),              //                         .writedata
+		.uav_lock               (onchip_ram_s1_agent_m0_lock),                   //                         .lock
+		.uav_debugaccess        (onchip_ram_s1_agent_m0_debugaccess),            //                         .debugaccess
+		.av_address             (onchip_ram_s1_address),                         //      avalon_anti_slave_0.address
+		.av_write               (onchip_ram_s1_write),                           //                         .write
+		.av_readdata            (onchip_ram_s1_readdata),                        //                         .readdata
+		.av_writedata           (onchip_ram_s1_writedata),                       //                         .writedata
+		.av_byteenable          (onchip_ram_s1_byteenable),                      //                         .byteenable
+		.av_chipselect          (onchip_ram_s1_chipselect),                      //                         .chipselect
+		.av_clken               (onchip_ram_s1_clken),                           //                         .clken
 		.av_read                (),                                              //              (terminated)
 		.av_begintransfer       (),                                              //              (terminated)
 		.av_beginbursttransfer  (),                                              //              (terminated)
@@ -2262,50 +2262,50 @@ module soc_system_mm_interconnect_1 (
 		.USE_READRESPONSE          (0),
 		.USE_WRITERESPONSE         (0),
 		.ECC_ENABLE                (0)
-	) onchip_memory2_0_s1_agent (
-		.clk                     (clk_0_clk_clk),                                        //             clk.clk
-		.reset                   (mm_bridge_0_reset_reset_bridge_in_reset_reset),        //       clk_reset.reset
-		.m0_address              (onchip_memory2_0_s1_agent_m0_address),                 //              m0.address
-		.m0_burstcount           (onchip_memory2_0_s1_agent_m0_burstcount),              //                .burstcount
-		.m0_byteenable           (onchip_memory2_0_s1_agent_m0_byteenable),              //                .byteenable
-		.m0_debugaccess          (onchip_memory2_0_s1_agent_m0_debugaccess),             //                .debugaccess
-		.m0_lock                 (onchip_memory2_0_s1_agent_m0_lock),                    //                .lock
-		.m0_readdata             (onchip_memory2_0_s1_agent_m0_readdata),                //                .readdata
-		.m0_readdatavalid        (onchip_memory2_0_s1_agent_m0_readdatavalid),           //                .readdatavalid
-		.m0_read                 (onchip_memory2_0_s1_agent_m0_read),                    //                .read
-		.m0_waitrequest          (onchip_memory2_0_s1_agent_m0_waitrequest),             //                .waitrequest
-		.m0_writedata            (onchip_memory2_0_s1_agent_m0_writedata),               //                .writedata
-		.m0_write                (onchip_memory2_0_s1_agent_m0_write),                   //                .write
-		.rp_endofpacket          (onchip_memory2_0_s1_agent_rp_endofpacket),             //              rp.endofpacket
-		.rp_ready                (onchip_memory2_0_s1_agent_rp_ready),                   //                .ready
-		.rp_valid                (onchip_memory2_0_s1_agent_rp_valid),                   //                .valid
-		.rp_data                 (onchip_memory2_0_s1_agent_rp_data),                    //                .data
-		.rp_startofpacket        (onchip_memory2_0_s1_agent_rp_startofpacket),           //                .startofpacket
-		.cp_ready                (cmd_mux_006_src_ready),                                //              cp.ready
-		.cp_valid                (cmd_mux_006_src_valid),                                //                .valid
-		.cp_data                 (cmd_mux_006_src_data),                                 //                .data
-		.cp_startofpacket        (cmd_mux_006_src_startofpacket),                        //                .startofpacket
-		.cp_endofpacket          (cmd_mux_006_src_endofpacket),                          //                .endofpacket
-		.cp_channel              (cmd_mux_006_src_channel),                              //                .channel
-		.rf_sink_ready           (onchip_memory2_0_s1_agent_rsp_fifo_out_ready),         //         rf_sink.ready
-		.rf_sink_valid           (onchip_memory2_0_s1_agent_rsp_fifo_out_valid),         //                .valid
-		.rf_sink_startofpacket   (onchip_memory2_0_s1_agent_rsp_fifo_out_startofpacket), //                .startofpacket
-		.rf_sink_endofpacket     (onchip_memory2_0_s1_agent_rsp_fifo_out_endofpacket),   //                .endofpacket
-		.rf_sink_data            (onchip_memory2_0_s1_agent_rsp_fifo_out_data),          //                .data
-		.rf_source_ready         (onchip_memory2_0_s1_agent_rf_source_ready),            //       rf_source.ready
-		.rf_source_valid         (onchip_memory2_0_s1_agent_rf_source_valid),            //                .valid
-		.rf_source_startofpacket (onchip_memory2_0_s1_agent_rf_source_startofpacket),    //                .startofpacket
-		.rf_source_endofpacket   (onchip_memory2_0_s1_agent_rf_source_endofpacket),      //                .endofpacket
-		.rf_source_data          (onchip_memory2_0_s1_agent_rf_source_data),             //                .data
-		.rdata_fifo_sink_ready   (avalon_st_adapter_006_out_0_ready),                    // rdata_fifo_sink.ready
-		.rdata_fifo_sink_valid   (avalon_st_adapter_006_out_0_valid),                    //                .valid
-		.rdata_fifo_sink_data    (avalon_st_adapter_006_out_0_data),                     //                .data
-		.rdata_fifo_sink_error   (avalon_st_adapter_006_out_0_error),                    //                .error
-		.rdata_fifo_src_ready    (onchip_memory2_0_s1_agent_rdata_fifo_src_ready),       //  rdata_fifo_src.ready
-		.rdata_fifo_src_valid    (onchip_memory2_0_s1_agent_rdata_fifo_src_valid),       //                .valid
-		.rdata_fifo_src_data     (onchip_memory2_0_s1_agent_rdata_fifo_src_data),        //                .data
-		.m0_response             (2'b00),                                                //     (terminated)
-		.m0_writeresponsevalid   (1'b0)                                                  //     (terminated)
+	) onchip_ram_s1_agent (
+		.clk                     (clk_0_clk_clk),                                  //             clk.clk
+		.reset                   (mm_bridge_0_reset_reset_bridge_in_reset_reset),  //       clk_reset.reset
+		.m0_address              (onchip_ram_s1_agent_m0_address),                 //              m0.address
+		.m0_burstcount           (onchip_ram_s1_agent_m0_burstcount),              //                .burstcount
+		.m0_byteenable           (onchip_ram_s1_agent_m0_byteenable),              //                .byteenable
+		.m0_debugaccess          (onchip_ram_s1_agent_m0_debugaccess),             //                .debugaccess
+		.m0_lock                 (onchip_ram_s1_agent_m0_lock),                    //                .lock
+		.m0_readdata             (onchip_ram_s1_agent_m0_readdata),                //                .readdata
+		.m0_readdatavalid        (onchip_ram_s1_agent_m0_readdatavalid),           //                .readdatavalid
+		.m0_read                 (onchip_ram_s1_agent_m0_read),                    //                .read
+		.m0_waitrequest          (onchip_ram_s1_agent_m0_waitrequest),             //                .waitrequest
+		.m0_writedata            (onchip_ram_s1_agent_m0_writedata),               //                .writedata
+		.m0_write                (onchip_ram_s1_agent_m0_write),                   //                .write
+		.rp_endofpacket          (onchip_ram_s1_agent_rp_endofpacket),             //              rp.endofpacket
+		.rp_ready                (onchip_ram_s1_agent_rp_ready),                   //                .ready
+		.rp_valid                (onchip_ram_s1_agent_rp_valid),                   //                .valid
+		.rp_data                 (onchip_ram_s1_agent_rp_data),                    //                .data
+		.rp_startofpacket        (onchip_ram_s1_agent_rp_startofpacket),           //                .startofpacket
+		.cp_ready                (cmd_mux_006_src_ready),                          //              cp.ready
+		.cp_valid                (cmd_mux_006_src_valid),                          //                .valid
+		.cp_data                 (cmd_mux_006_src_data),                           //                .data
+		.cp_startofpacket        (cmd_mux_006_src_startofpacket),                  //                .startofpacket
+		.cp_endofpacket          (cmd_mux_006_src_endofpacket),                    //                .endofpacket
+		.cp_channel              (cmd_mux_006_src_channel),                        //                .channel
+		.rf_sink_ready           (onchip_ram_s1_agent_rsp_fifo_out_ready),         //         rf_sink.ready
+		.rf_sink_valid           (onchip_ram_s1_agent_rsp_fifo_out_valid),         //                .valid
+		.rf_sink_startofpacket   (onchip_ram_s1_agent_rsp_fifo_out_startofpacket), //                .startofpacket
+		.rf_sink_endofpacket     (onchip_ram_s1_agent_rsp_fifo_out_endofpacket),   //                .endofpacket
+		.rf_sink_data            (onchip_ram_s1_agent_rsp_fifo_out_data),          //                .data
+		.rf_source_ready         (onchip_ram_s1_agent_rf_source_ready),            //       rf_source.ready
+		.rf_source_valid         (onchip_ram_s1_agent_rf_source_valid),            //                .valid
+		.rf_source_startofpacket (onchip_ram_s1_agent_rf_source_startofpacket),    //                .startofpacket
+		.rf_source_endofpacket   (onchip_ram_s1_agent_rf_source_endofpacket),      //                .endofpacket
+		.rf_source_data          (onchip_ram_s1_agent_rf_source_data),             //                .data
+		.rdata_fifo_sink_ready   (avalon_st_adapter_006_out_0_ready),              // rdata_fifo_sink.ready
+		.rdata_fifo_sink_valid   (avalon_st_adapter_006_out_0_valid),              //                .valid
+		.rdata_fifo_sink_data    (avalon_st_adapter_006_out_0_data),               //                .data
+		.rdata_fifo_sink_error   (avalon_st_adapter_006_out_0_error),              //                .error
+		.rdata_fifo_src_ready    (onchip_ram_s1_agent_rdata_fifo_src_ready),       //  rdata_fifo_src.ready
+		.rdata_fifo_src_valid    (onchip_ram_s1_agent_rdata_fifo_src_valid),       //                .valid
+		.rdata_fifo_src_data     (onchip_ram_s1_agent_rdata_fifo_src_data),        //                .data
+		.m0_response             (2'b00),                                          //     (terminated)
+		.m0_writeresponsevalid   (1'b0)                                            //     (terminated)
 	);
 
 	altera_avalon_sc_fifo #(
@@ -2321,32 +2321,32 @@ module soc_system_mm_interconnect_1 (
 		.USE_STORE_FORWARD   (0),
 		.USE_ALMOST_FULL_IF  (0),
 		.USE_ALMOST_EMPTY_IF (0)
-	) onchip_memory2_0_s1_agent_rsp_fifo (
-		.clk               (clk_0_clk_clk),                                        //       clk.clk
-		.reset             (mm_bridge_0_reset_reset_bridge_in_reset_reset),        // clk_reset.reset
-		.in_data           (onchip_memory2_0_s1_agent_rf_source_data),             //        in.data
-		.in_valid          (onchip_memory2_0_s1_agent_rf_source_valid),            //          .valid
-		.in_ready          (onchip_memory2_0_s1_agent_rf_source_ready),            //          .ready
-		.in_startofpacket  (onchip_memory2_0_s1_agent_rf_source_startofpacket),    //          .startofpacket
-		.in_endofpacket    (onchip_memory2_0_s1_agent_rf_source_endofpacket),      //          .endofpacket
-		.out_data          (onchip_memory2_0_s1_agent_rsp_fifo_out_data),          //       out.data
-		.out_valid         (onchip_memory2_0_s1_agent_rsp_fifo_out_valid),         //          .valid
-		.out_ready         (onchip_memory2_0_s1_agent_rsp_fifo_out_ready),         //          .ready
-		.out_startofpacket (onchip_memory2_0_s1_agent_rsp_fifo_out_startofpacket), //          .startofpacket
-		.out_endofpacket   (onchip_memory2_0_s1_agent_rsp_fifo_out_endofpacket),   //          .endofpacket
-		.csr_address       (2'b00),                                                // (terminated)
-		.csr_read          (1'b0),                                                 // (terminated)
-		.csr_write         (1'b0),                                                 // (terminated)
-		.csr_readdata      (),                                                     // (terminated)
-		.csr_writedata     (32'b00000000000000000000000000000000),                 // (terminated)
-		.almost_full_data  (),                                                     // (terminated)
-		.almost_empty_data (),                                                     // (terminated)
-		.in_empty          (1'b0),                                                 // (terminated)
-		.out_empty         (),                                                     // (terminated)
-		.in_error          (1'b0),                                                 // (terminated)
-		.out_error         (),                                                     // (terminated)
-		.in_channel        (1'b0),                                                 // (terminated)
-		.out_channel       ()                                                      // (terminated)
+	) onchip_ram_s1_agent_rsp_fifo (
+		.clk               (clk_0_clk_clk),                                  //       clk.clk
+		.reset             (mm_bridge_0_reset_reset_bridge_in_reset_reset),  // clk_reset.reset
+		.in_data           (onchip_ram_s1_agent_rf_source_data),             //        in.data
+		.in_valid          (onchip_ram_s1_agent_rf_source_valid),            //          .valid
+		.in_ready          (onchip_ram_s1_agent_rf_source_ready),            //          .ready
+		.in_startofpacket  (onchip_ram_s1_agent_rf_source_startofpacket),    //          .startofpacket
+		.in_endofpacket    (onchip_ram_s1_agent_rf_source_endofpacket),      //          .endofpacket
+		.out_data          (onchip_ram_s1_agent_rsp_fifo_out_data),          //       out.data
+		.out_valid         (onchip_ram_s1_agent_rsp_fifo_out_valid),         //          .valid
+		.out_ready         (onchip_ram_s1_agent_rsp_fifo_out_ready),         //          .ready
+		.out_startofpacket (onchip_ram_s1_agent_rsp_fifo_out_startofpacket), //          .startofpacket
+		.out_endofpacket   (onchip_ram_s1_agent_rsp_fifo_out_endofpacket),   //          .endofpacket
+		.csr_address       (2'b00),                                          // (terminated)
+		.csr_read          (1'b0),                                           // (terminated)
+		.csr_write         (1'b0),                                           // (terminated)
+		.csr_readdata      (),                                               // (terminated)
+		.csr_writedata     (32'b00000000000000000000000000000000),           // (terminated)
+		.almost_full_data  (),                                               // (terminated)
+		.almost_empty_data (),                                               // (terminated)
+		.in_empty          (1'b0),                                           // (terminated)
+		.out_empty         (),                                               // (terminated)
+		.in_error          (1'b0),                                           // (terminated)
+		.out_error         (),                                               // (terminated)
+		.in_channel        (1'b0),                                           // (terminated)
+		.out_channel       ()                                                // (terminated)
 	);
 
 	altera_merlin_slave_agent #(
@@ -2603,11 +2603,11 @@ module soc_system_mm_interconnect_1 (
 	);
 
 	soc_system_mm_interconnect_1_router_008 router_008 (
-		.sink_ready         (onchip_memory2_0_s1_agent_rp_ready),            //      sink.ready
-		.sink_valid         (onchip_memory2_0_s1_agent_rp_valid),            //          .valid
-		.sink_data          (onchip_memory2_0_s1_agent_rp_data),             //          .data
-		.sink_startofpacket (onchip_memory2_0_s1_agent_rp_startofpacket),    //          .startofpacket
-		.sink_endofpacket   (onchip_memory2_0_s1_agent_rp_endofpacket),      //          .endofpacket
+		.sink_ready         (onchip_ram_s1_agent_rp_ready),                  //      sink.ready
+		.sink_valid         (onchip_ram_s1_agent_rp_valid),                  //          .valid
+		.sink_data          (onchip_ram_s1_agent_rp_data),                   //          .data
+		.sink_startofpacket (onchip_ram_s1_agent_rp_startofpacket),          //          .startofpacket
+		.sink_endofpacket   (onchip_ram_s1_agent_rp_endofpacket),            //          .endofpacket
 		.clk                (clk_0_clk_clk),                                 //       clk.clk
 		.reset              (mm_bridge_0_reset_reset_bridge_in_reset_reset), // clk_reset.reset
 		.src_ready          (router_008_src_ready),                          //       src.ready
@@ -3482,15 +3482,15 @@ module soc_system_mm_interconnect_1 (
 		.outUseReady     (1),
 		.outReadyLatency (0)
 	) avalon_st_adapter_006 (
-		.in_clk_0_clk   (clk_0_clk_clk),                                  // in_clk_0.clk
-		.in_rst_0_reset (mm_bridge_0_reset_reset_bridge_in_reset_reset),  // in_rst_0.reset
-		.in_0_data      (onchip_memory2_0_s1_agent_rdata_fifo_src_data),  //     in_0.data
-		.in_0_valid     (onchip_memory2_0_s1_agent_rdata_fifo_src_valid), //         .valid
-		.in_0_ready     (onchip_memory2_0_s1_agent_rdata_fifo_src_ready), //         .ready
-		.out_0_data     (avalon_st_adapter_006_out_0_data),               //    out_0.data
-		.out_0_valid    (avalon_st_adapter_006_out_0_valid),              //         .valid
-		.out_0_ready    (avalon_st_adapter_006_out_0_ready),              //         .ready
-		.out_0_error    (avalon_st_adapter_006_out_0_error)               //         .error
+		.in_clk_0_clk   (clk_0_clk_clk),                                 // in_clk_0.clk
+		.in_rst_0_reset (mm_bridge_0_reset_reset_bridge_in_reset_reset), // in_rst_0.reset
+		.in_0_data      (onchip_ram_s1_agent_rdata_fifo_src_data),       //     in_0.data
+		.in_0_valid     (onchip_ram_s1_agent_rdata_fifo_src_valid),      //         .valid
+		.in_0_ready     (onchip_ram_s1_agent_rdata_fifo_src_ready),      //         .ready
+		.out_0_data     (avalon_st_adapter_006_out_0_data),              //    out_0.data
+		.out_0_valid    (avalon_st_adapter_006_out_0_valid),             //         .valid
+		.out_0_ready    (avalon_st_adapter_006_out_0_ready),             //         .ready
+		.out_0_error    (avalon_st_adapter_006_out_0_error)              //         .error
 	);
 
 	soc_system_mm_interconnect_0_avalon_st_adapter #(

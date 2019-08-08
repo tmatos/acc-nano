@@ -234,7 +234,7 @@
          type = "boolean";
       }
    }
-   element onchip_memory2_0
+   element onchip_ram
    {
       datum _sortIndex
       {
@@ -1010,12 +1010,12 @@
   <parameter name="USE_RESPONSE" value="0" />
  </module>
  <module
-   name="onchip_memory2_0"
+   name="onchip_ram"
    kind="altera_avalon_onchip_memory2"
    version="18.1"
    enabled="1">
   <parameter name="allowInSystemMemoryContentEditor" value="false" />
-  <parameter name="autoInitializationFileName">$${FILENAME}_onchip_memory2_0</parameter>
+  <parameter name="autoInitializationFileName">$${FILENAME}_onchip_ram</parameter>
   <parameter name="blockType" value="AUTO" />
   <parameter name="copyInitFile" value="false" />
   <parameter name="dataWidth" value="32" />
@@ -1129,7 +1129,7 @@
    kind="avalon"
    version="18.1"
    start="mm_bridge_0.m0"
-   end="onchip_memory2_0.s1">
+   end="onchip_ram.s1">
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0x0000" />
   <parameter name="defaultConnection" value="false" />
@@ -1239,11 +1239,7 @@
  <connection kind="clock" version="18.1" start="clk_0.clk" end="ILC.clk" />
  <connection kind="clock" version="18.1" start="clk_0.clk" end="pio_controle.clk" />
  <connection kind="clock" version="18.1" start="clk_0.clk" end="accelerator_0.clk" />
- <connection
-   kind="clock"
-   version="18.1"
-   start="clk_0.clk"
-   end="onchip_memory2_0.clk1" />
+ <connection kind="clock" version="18.1" start="clk_0.clk" end="onchip_ram.clk1" />
  <connection
    kind="clock"
    version="18.1"
@@ -1348,7 +1344,7 @@
    kind="reset"
    version="18.1"
    start="clk_0.clk_reset"
-   end="onchip_memory2_0.reset1" />
+   end="onchip_ram.reset1" />
  <connection kind="reset" version="18.1" start="clk_0.clk_reset" end="ILC.reset_n" />
  <connection
    kind="reset"

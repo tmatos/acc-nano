@@ -173,13 +173,13 @@ module soc_system (
 	wire    [1:0] mm_interconnect_1_button_pio_s1_address;                   // mm_interconnect_1:button_pio_s1_address -> button_pio:address
 	wire          mm_interconnect_1_button_pio_s1_write;                     // mm_interconnect_1:button_pio_s1_write -> button_pio:write_n
 	wire   [31:0] mm_interconnect_1_button_pio_s1_writedata;                 // mm_interconnect_1:button_pio_s1_writedata -> button_pio:writedata
-	wire          mm_interconnect_1_onchip_memory2_0_s1_chipselect;          // mm_interconnect_1:onchip_memory2_0_s1_chipselect -> onchip_memory2_0:chipselect
-	wire   [31:0] mm_interconnect_1_onchip_memory2_0_s1_readdata;            // onchip_memory2_0:readdata -> mm_interconnect_1:onchip_memory2_0_s1_readdata
-	wire    [9:0] mm_interconnect_1_onchip_memory2_0_s1_address;             // mm_interconnect_1:onchip_memory2_0_s1_address -> onchip_memory2_0:address
-	wire    [3:0] mm_interconnect_1_onchip_memory2_0_s1_byteenable;          // mm_interconnect_1:onchip_memory2_0_s1_byteenable -> onchip_memory2_0:byteenable
-	wire          mm_interconnect_1_onchip_memory2_0_s1_write;               // mm_interconnect_1:onchip_memory2_0_s1_write -> onchip_memory2_0:write
-	wire   [31:0] mm_interconnect_1_onchip_memory2_0_s1_writedata;           // mm_interconnect_1:onchip_memory2_0_s1_writedata -> onchip_memory2_0:writedata
-	wire          mm_interconnect_1_onchip_memory2_0_s1_clken;               // mm_interconnect_1:onchip_memory2_0_s1_clken -> onchip_memory2_0:clken
+	wire          mm_interconnect_1_onchip_ram_s1_chipselect;                // mm_interconnect_1:onchip_ram_s1_chipselect -> onchip_ram:chipselect
+	wire   [31:0] mm_interconnect_1_onchip_ram_s1_readdata;                  // onchip_ram:readdata -> mm_interconnect_1:onchip_ram_s1_readdata
+	wire    [9:0] mm_interconnect_1_onchip_ram_s1_address;                   // mm_interconnect_1:onchip_ram_s1_address -> onchip_ram:address
+	wire    [3:0] mm_interconnect_1_onchip_ram_s1_byteenable;                // mm_interconnect_1:onchip_ram_s1_byteenable -> onchip_ram:byteenable
+	wire          mm_interconnect_1_onchip_ram_s1_write;                     // mm_interconnect_1:onchip_ram_s1_write -> onchip_ram:write
+	wire   [31:0] mm_interconnect_1_onchip_ram_s1_writedata;                 // mm_interconnect_1:onchip_ram_s1_writedata -> onchip_ram:writedata
+	wire          mm_interconnect_1_onchip_ram_s1_clken;                     // mm_interconnect_1:onchip_ram_s1_clken -> onchip_ram:clken
 	wire          mm_interconnect_1_pio_controle_s1_chipselect;              // mm_interconnect_1:pio_controle_s1_chipselect -> pio_controle:chipselect
 	wire   [31:0] mm_interconnect_1_pio_controle_s1_readdata;                // pio_controle:readdata -> mm_interconnect_1:pio_controle_s1_readdata
 	wire    [1:0] mm_interconnect_1_pio_controle_s1_address;                 // mm_interconnect_1:pio_controle_s1_address -> pio_controle:address
@@ -254,8 +254,8 @@ module soc_system (
 	wire          irq_mapper_receiver1_irq;                                  // button_pio:irq -> [irq_mapper:receiver1_irq, irq_mapper_001:receiver1_irq]
 	wire          irq_mapper_receiver2_irq;                                  // dipsw_pio:irq -> [irq_mapper:receiver2_irq, irq_mapper_001:receiver2_irq]
 	wire          irq_mapper_receiver0_irq;                                  // jtag_uart:av_irq -> [irq_mapper:receiver0_irq, irq_mapper_001:receiver0_irq]
-	wire          rst_controller_reset_out_reset;                            // rst_controller:reset_out -> [ILC:reset_n, accelerator_0:rst_n, button_pio:reset_n, dipsw_pio:reset_n, irq_mapper:reset, jtag_uart:rst_n, led_pio:reset_n, mm_bridge_0:reset, mm_interconnect_0:mm_bridge_0_reset_reset_bridge_in_reset_reset, mm_interconnect_1:fpga_only_master_clk_reset_reset_bridge_in_reset_reset, mm_interconnect_1:mm_bridge_0_reset_reset_bridge_in_reset_reset, mm_interconnect_2:hps_only_master_clk_reset_reset_bridge_in_reset_reset, mm_interconnect_2:hps_only_master_master_translator_reset_reset_bridge_in_reset_reset, mm_interconnect_3:f2sdram_only_master_clk_reset_reset_bridge_in_reset_reset, mm_interconnect_3:f2sdram_only_master_master_translator_reset_reset_bridge_in_reset_reset, onchip_memory2_0:reset, pio_controle:reset_n, rst_translator:in_reset, sysid_qsys:reset_n]
-	wire          rst_controller_reset_out_reset_req;                        // rst_controller:reset_req -> [onchip_memory2_0:reset_req, rst_translator:reset_req_in]
+	wire          rst_controller_reset_out_reset;                            // rst_controller:reset_out -> [ILC:reset_n, accelerator_0:rst_n, button_pio:reset_n, dipsw_pio:reset_n, irq_mapper:reset, jtag_uart:rst_n, led_pio:reset_n, mm_bridge_0:reset, mm_interconnect_0:mm_bridge_0_reset_reset_bridge_in_reset_reset, mm_interconnect_1:fpga_only_master_clk_reset_reset_bridge_in_reset_reset, mm_interconnect_1:mm_bridge_0_reset_reset_bridge_in_reset_reset, mm_interconnect_2:hps_only_master_clk_reset_reset_bridge_in_reset_reset, mm_interconnect_2:hps_only_master_master_translator_reset_reset_bridge_in_reset_reset, mm_interconnect_3:f2sdram_only_master_clk_reset_reset_bridge_in_reset_reset, mm_interconnect_3:f2sdram_only_master_master_translator_reset_reset_bridge_in_reset_reset, onchip_ram:reset, pio_controle:reset_n, rst_translator:in_reset, sysid_qsys:reset_n]
+	wire          rst_controller_reset_out_reset_req;                        // rst_controller:reset_req -> [onchip_ram:reset_req, rst_translator:reset_req_in]
 	wire          rst_controller_001_reset_out_reset;                        // rst_controller_001:reset_out -> [mm_interconnect_0:hps_0_h2f_lw_axi_master_agent_clk_reset_reset_bridge_in_reset_reset, mm_interconnect_2:hps_0_f2h_axi_slave_agent_reset_sink_reset_bridge_in_reset_reset, mm_interconnect_3:hps_0_f2h_sdram0_data_translator_reset_reset_bridge_in_reset_reset]
 
 	interrupt_latency_counter #(
@@ -615,18 +615,18 @@ module soc_system (
 		.m0_response      (2'b00)                                           // (terminated)
 	);
 
-	soc_system_onchip_memory2_0 onchip_memory2_0 (
-		.clk        (clk_clk),                                          //   clk1.clk
-		.address    (mm_interconnect_1_onchip_memory2_0_s1_address),    //     s1.address
-		.clken      (mm_interconnect_1_onchip_memory2_0_s1_clken),      //       .clken
-		.chipselect (mm_interconnect_1_onchip_memory2_0_s1_chipselect), //       .chipselect
-		.write      (mm_interconnect_1_onchip_memory2_0_s1_write),      //       .write
-		.readdata   (mm_interconnect_1_onchip_memory2_0_s1_readdata),   //       .readdata
-		.writedata  (mm_interconnect_1_onchip_memory2_0_s1_writedata),  //       .writedata
-		.byteenable (mm_interconnect_1_onchip_memory2_0_s1_byteenable), //       .byteenable
-		.reset      (rst_controller_reset_out_reset),                   // reset1.reset
-		.reset_req  (rst_controller_reset_out_reset_req),               //       .reset_req
-		.freeze     (1'b0)                                              // (terminated)
+	soc_system_onchip_ram onchip_ram (
+		.clk        (clk_clk),                                    //   clk1.clk
+		.address    (mm_interconnect_1_onchip_ram_s1_address),    //     s1.address
+		.clken      (mm_interconnect_1_onchip_ram_s1_clken),      //       .clken
+		.chipselect (mm_interconnect_1_onchip_ram_s1_chipselect), //       .chipselect
+		.write      (mm_interconnect_1_onchip_ram_s1_write),      //       .write
+		.readdata   (mm_interconnect_1_onchip_ram_s1_readdata),   //       .readdata
+		.writedata  (mm_interconnect_1_onchip_ram_s1_writedata),  //       .writedata
+		.byteenable (mm_interconnect_1_onchip_ram_s1_byteenable), //       .byteenable
+		.reset      (rst_controller_reset_out_reset),             // reset1.reset
+		.reset_req  (rst_controller_reset_out_reset_req),         //       .reset_req
+		.freeze     (1'b0)                                        // (terminated)
 	);
 
 	soc_system_pio_controle pio_controle (
@@ -749,13 +749,13 @@ module soc_system (
 		.led_pio_s1_readdata                                    (mm_interconnect_1_led_pio_s1_readdata),                     //                                                 .readdata
 		.led_pio_s1_writedata                                   (mm_interconnect_1_led_pio_s1_writedata),                    //                                                 .writedata
 		.led_pio_s1_chipselect                                  (mm_interconnect_1_led_pio_s1_chipselect),                   //                                                 .chipselect
-		.onchip_memory2_0_s1_address                            (mm_interconnect_1_onchip_memory2_0_s1_address),             //                              onchip_memory2_0_s1.address
-		.onchip_memory2_0_s1_write                              (mm_interconnect_1_onchip_memory2_0_s1_write),               //                                                 .write
-		.onchip_memory2_0_s1_readdata                           (mm_interconnect_1_onchip_memory2_0_s1_readdata),            //                                                 .readdata
-		.onchip_memory2_0_s1_writedata                          (mm_interconnect_1_onchip_memory2_0_s1_writedata),           //                                                 .writedata
-		.onchip_memory2_0_s1_byteenable                         (mm_interconnect_1_onchip_memory2_0_s1_byteenable),          //                                                 .byteenable
-		.onchip_memory2_0_s1_chipselect                         (mm_interconnect_1_onchip_memory2_0_s1_chipselect),          //                                                 .chipselect
-		.onchip_memory2_0_s1_clken                              (mm_interconnect_1_onchip_memory2_0_s1_clken),               //                                                 .clken
+		.onchip_ram_s1_address                                  (mm_interconnect_1_onchip_ram_s1_address),                   //                                    onchip_ram_s1.address
+		.onchip_ram_s1_write                                    (mm_interconnect_1_onchip_ram_s1_write),                     //                                                 .write
+		.onchip_ram_s1_readdata                                 (mm_interconnect_1_onchip_ram_s1_readdata),                  //                                                 .readdata
+		.onchip_ram_s1_writedata                                (mm_interconnect_1_onchip_ram_s1_writedata),                 //                                                 .writedata
+		.onchip_ram_s1_byteenable                               (mm_interconnect_1_onchip_ram_s1_byteenable),                //                                                 .byteenable
+		.onchip_ram_s1_chipselect                               (mm_interconnect_1_onchip_ram_s1_chipselect),                //                                                 .chipselect
+		.onchip_ram_s1_clken                                    (mm_interconnect_1_onchip_ram_s1_clken),                     //                                                 .clken
 		.pio_controle_s1_address                                (mm_interconnect_1_pio_controle_s1_address),                 //                                  pio_controle_s1.address
 		.pio_controle_s1_write                                  (mm_interconnect_1_pio_controle_s1_write),                   //                                                 .write
 		.pio_controle_s1_readdata                               (mm_interconnect_1_pio_controle_s1_readdata),                //                                                 .readdata

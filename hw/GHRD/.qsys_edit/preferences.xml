@@ -10,7 +10,6 @@
    <description preferredWidth="223" />
   </columns>
  </systemtable>
- <library
-   expandedCategories="Library/Qsys Interconnect,Project,Library/Processors and Peripherals,Library,Library/Interface Protocols,Library/Processors and Peripherals/Peripherals,Library/Basic Functions" />
+ <library expandedCategories="Library,Project" />
  <window width="1372" height="742" x="-3" y="0" />
 </preferences>

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <EnsembleReport name="soc_system" kind="soc_system" version="1.0" fabric="QSYS">
  <!-- Format version 18.1 646 (Future versions may contain additional information.) -->
- <!-- 2019.07.27.17:26:50 -->
+ <!-- 2019.08.07.22:11:32 -->
  <!-- A collection of modules and connections -->
  <parameter name="AUTO_GENERATION_ID">
   <type>java.lang.Integer</type>
-  <value>1564259186</value>
+  <value>1565226667</value>
   <derived>false</derived>
   <enabled>true</enabled>
   <visible>false</visible>
@@ -2065,9 +2065,9 @@ parameters are a RESULT of the module parameters. -->
    </clockDomainMember>
    <clockDomainMember>
     <isBridge>false</isBridge>
-    <moduleName>onchip_memory2_0</moduleName>
+    <moduleName>onchip_ram</moduleName>
     <slaveName>clk1</slaveName>
-    <name>onchip_memory2_0.clk1</name>
+    <name>onchip_ram.clk1</name>
    </clockDomainMember>
    <clockDomainMember>
     <isBridge>false</isBridge>
@@ -21275,9 +21275,9 @@ parameters are a RESULT of the module parameters. -->
    </memoryBlock>
    <memoryBlock>
     <isBridge>false</isBridge>
-    <moduleName>onchip_memory2_0</moduleName>
+    <moduleName>onchip_ram</moduleName>
     <slaveName>s1</slaveName>
-    <name>onchip_memory2_0.s1</name>
+    <name>onchip_ram.s1</name>
     <baseAddress>0</baseAddress>
     <span>4096</span>
    </memoryBlock>
@@ -48204,9 +48204,9 @@ parameters are a RESULT of the module parameters. -->
    </memoryBlock>
    <memoryBlock>
     <isBridge>false</isBridge>
-    <moduleName>onchip_memory2_0</moduleName>
+    <moduleName>onchip_ram</moduleName>
     <slaveName>s1</slaveName>
-    <name>onchip_memory2_0.s1</name>
+    <name>onchip_ram.s1</name>
     <baseAddress>0</baseAddress>
     <span>4096</span>
    </memoryBlock>
@@ -50245,9 +50245,9 @@ parameters are a RESULT of the module parameters. -->
    </memoryBlock>
    <memoryBlock>
     <isBridge>false</isBridge>
-    <moduleName>onchip_memory2_0</moduleName>
+    <moduleName>onchip_ram</moduleName>
     <slaveName>s1</slaveName>
-    <name>onchip_memory2_0.s1</name>
+    <name>onchip_ram.s1</name>
     <baseAddress>4280287232</baseAddress>
     <span>4096</span>
    </memoryBlock>
@@ -51140,9 +51140,9 @@ parameters are a RESULT of the module parameters. -->
    </memoryBlock>
    <memoryBlock>
     <isBridge>false</isBridge>
-    <moduleName>onchip_memory2_0</moduleName>
+    <moduleName>onchip_ram</moduleName>
     <slaveName>s1</slaveName>
-    <name>onchip_memory2_0.s1</name>
+    <name>onchip_ram.s1</name>
     <baseAddress>4280287232</baseAddress>
     <span>4096</span>
    </memoryBlock>
@@ -82185,9 +82185,9 @@ parameters are a RESULT of the module parameters. -->
    </memoryBlock>
    <memoryBlock>
     <isBridge>false</isBridge>
-    <moduleName>onchip_memory2_0</moduleName>
+    <moduleName>onchip_ram</moduleName>
     <slaveName>s1</slaveName>
-    <name>onchip_memory2_0.s1</name>
+    <name>onchip_ram.s1</name>
     <baseAddress>0</baseAddress>
     <span>4096</span>
    </memoryBlock>
@@ -82202,10 +82202,10 @@ parameters are a RESULT of the module parameters. -->
   </interface>
  </module>
  <module
-   name="onchip_memory2_0"
+   name="onchip_ram"
    kind="altera_avalon_onchip_memory2"
    version="18.1"
-   path="onchip_memory2_0">
+   path="onchip_ram">
   <!-- Describes a single module. Module parameters are
 the requested settings for a module instance. -->
   <assignment>
@@ -82230,7 +82230,7 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.INIT_CONTENTS_FILE</name>
-   <value>soc_system_onchip_memory2_0</value>
+   <value>soc_system_onchip_ram</value>
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.INIT_MEM_CONTENT</name>
@@ -82294,7 +82294,7 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.memoryInfo.MEM_INIT_FILENAME</name>
-   <value>soc_system_onchip_memory2_0</value>
+   <value>soc_system_onchip_ram</value>
   </assignment>
   <assignment>
    <name>postgeneration.simulation.init_file.param_name</name>
@@ -82506,7 +82506,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="autoInitializationFileName">
    <type>java.lang.String</type>
-   <value>soc_system_onchip_memory2_0</value>
+   <value>soc_system_onchip_ram</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -82581,7 +82581,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="derived_init_file_name">
    <type>java.lang.String</type>
-   <value>soc_system_onchip_memory2_0.hex</value>
+   <value>soc_system_onchip_ram.hex</value>
    <derived>true</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -83866,7 +83866,7 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.TIMESTAMP</name>
-   <value>1564259186</value>
+   <value>1565226667</value>
   </assignment>
   <assignment>
    <name>embeddedsw.dts.compatible</name>
@@ -83886,7 +83886,7 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.dts.params.timestamp</name>
-   <value>1564259186</value>
+   <value>1565226667</value>
   </assignment>
   <assignment>
    <name>embeddedsw.dts.vendor</name>
@@ -83902,7 +83902,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="timestamp">
    <type>int</type>
-   <value>1564259186</value>
+   <value>1565226667</value>
    <derived>true</derived>
    <enabled>false</enabled>
    <visible>false</visible>
@@ -94843,11 +94843,11 @@ parameters are a RESULT of the module parameters. -->
   <endConnectionPoint>s1</endConnectionPoint>
  </connection>
  <connection
-   name="mm_bridge_0.m0/onchip_memory2_0.s1"
+   name="mm_bridge_0.m0/onchip_ram.s1"
    kind="avalon"
    version="18.1"
    start="mm_bridge_0.m0"
-   end="onchip_memory2_0.s1">
+   end="onchip_ram.s1">
   <parameter name="arbitrationPriority">
    <type>int</type>
    <value>1</value>
@@ -94890,7 +94890,7 @@ parameters are a RESULT of the module parameters. -->
   </parameter>
   <startModule>mm_bridge_0</startModule>
   <startConnectionPoint>m0</startConnectionPoint>
-  <endModule>onchip_memory2_0</endModule>
+  <endModule>onchip_ram</endModule>
   <endConnectionPoint>s1</endConnectionPoint>
  </connection>
  <connection
@@ -95677,11 +95677,11 @@ parameters are a RESULT of the module parameters. -->
   <endConnectionPoint>clk</endConnectionPoint>
  </connection>
  <connection
-   name="clk_0.clk/onchip_memory2_0.clk1"
+   name="clk_0.clk/onchip_ram.clk1"
    kind="clock"
    version="18.1"
    start="clk_0.clk"
-   end="onchip_memory2_0.clk1">
+   end="onchip_ram.clk1">
   <parameter name="deviceFamily">
    <type>java.lang.String</type>
    <value>UNKNOWN</value>
@@ -95700,7 +95700,7 @@ parameters are a RESULT of the module parameters. -->
   </parameter>
   <startModule>clk_0</startModule>
   <startConnectionPoint>clk</startConnectionPoint>
-  <endModule>onchip_memory2_0</endModule>
+  <endModule>onchip_ram</endModule>
   <endConnectionPoint>clk1</endConnectionPoint>
  </connection>
  <connection
@@ -96292,11 +96292,11 @@ parameters are a RESULT of the module parameters. -->
   <endConnectionPoint>reset</endConnectionPoint>
  </connection>
  <connection
-   name="clk_0.clk_reset/onchip_memory2_0.reset1"
+   name="clk_0.clk_reset/onchip_ram.reset1"
    kind="reset"
    version="18.1"
    start="clk_0.clk_reset"
-   end="onchip_memory2_0.reset1">
+   end="onchip_ram.reset1">
   <parameter name="deviceFamily">
    <type>java.lang.String</type>
    <value>UNKNOWN</value>
@@ -96315,7 +96315,7 @@ parameters are a RESULT of the module parameters. -->
   </parameter>
   <startModule>clk_0</startModule>
   <startConnectionPoint>clk_reset</startConnectionPoint>
-  <endModule>onchip_memory2_0</endModule>
+  <endModule>onchip_ram</endModule>
   <endConnectionPoint>reset1</endConnectionPoint>
  </connection>
  <connection
