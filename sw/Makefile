@@ -1,5 +1,5 @@
 #
-TARGET = hps2fpga_led
+TARGET = hps2fpga_tests
 
 #
 ALT_DEVICE_FAMILY ?= soc_cv_av
