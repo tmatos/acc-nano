@@ -1,20 +1,64 @@
 
 module custom_acc_top(
    input clk,
-   input rst_n,
+   input reset,
 	
-	input [7:0] controle
+	//input [7:0] i_controle,
+	//output [7:0] o_controle
+	
+	input i_start,
+	output o_finish
 	);
 
-	reg estado;
+	reg r_estado;
+	reg [63:0] r_contador;
 	
-	always@(posedge clk) begin
-		if(~rst_n) begin  // reset
-			estado <= 0;
+	wire w_start;
+	reg r_finish;
+	
+	assign w_start = i_start;
+	assign o_finish = r_finish;
+	
+	always@(posedge clk)
+	begin
+		if(reset)
+		begin
+			r_estado <= 0;
+			r_contador <= 0;
+			r_finish <= 0;
+		end
+		else if(r_estado == 0) begin
+			if(w_start == 1) begin
+				r_estado <= 1;
+				r_contador <= (r_contador + 1);
+			end
+			else begin
+				r_estado <= 0;
+				r_contador <= 0;
+			end
+		end
+		else if(r_estado == 1) begin
+			if(r_contador == 50000000) begin
+				r_estado <= 0;
+				r_contador <= 0;
+			end
+			else begin
+				r_estado <= 1;
+				r_contador <= (r_contador + 1);
+			end
+		end
+		
+		if(r_estado == 1) begin
+			if(r_contador == 50000000) begin
+				r_finish <= 1;
+			end else begin
+				r_finish <= 0;
+			end
 		end
 		else begin
-			estado <= controle[0];
+			r_finish <= 0;
 		end
+		
 	end
 
 endmodule

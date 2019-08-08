@@ -80,6 +80,8 @@ module soc_system (
 		input  wire        reset_reset_n                          //                          reset.reset_n
 	);
 
+	wire          accelerator_0_control_out_export;                          // accelerator_0:o_finish -> pio_controle_finish:in_port
+	wire          pio_controle_start_external_connection_export;             // pio_controle_start:out_port -> accelerator_0:i_start
 	wire    [1:0] hps_0_h2f_lw_axi_master_awburst;                           // hps_0:h2f_lw_AWBURST -> mm_interconnect_0:hps_0_h2f_lw_axi_master_awburst
 	wire    [3:0] hps_0_h2f_lw_axi_master_arlen;                             // hps_0:h2f_lw_ARLEN -> mm_interconnect_0:hps_0_h2f_lw_axi_master_arlen
 	wire    [3:0] hps_0_h2f_lw_axi_master_wstrb;                             // hps_0:h2f_lw_WSTRB -> mm_interconnect_0:hps_0_h2f_lw_axi_master_wstrb
@@ -180,11 +182,13 @@ module soc_system (
 	wire          mm_interconnect_1_onchip_ram_s1_write;                     // mm_interconnect_1:onchip_ram_s1_write -> onchip_ram:write
 	wire   [31:0] mm_interconnect_1_onchip_ram_s1_writedata;                 // mm_interconnect_1:onchip_ram_s1_writedata -> onchip_ram:writedata
 	wire          mm_interconnect_1_onchip_ram_s1_clken;                     // mm_interconnect_1:onchip_ram_s1_clken -> onchip_ram:clken
-	wire          mm_interconnect_1_pio_controle_s1_chipselect;              // mm_interconnect_1:pio_controle_s1_chipselect -> pio_controle:chipselect
-	wire   [31:0] mm_interconnect_1_pio_controle_s1_readdata;                // pio_controle:readdata -> mm_interconnect_1:pio_controle_s1_readdata
-	wire    [1:0] mm_interconnect_1_pio_controle_s1_address;                 // mm_interconnect_1:pio_controle_s1_address -> pio_controle:address
-	wire          mm_interconnect_1_pio_controle_s1_write;                   // mm_interconnect_1:pio_controle_s1_write -> pio_controle:write_n
-	wire   [31:0] mm_interconnect_1_pio_controle_s1_writedata;               // mm_interconnect_1:pio_controle_s1_writedata -> pio_controle:writedata
+	wire          mm_interconnect_1_pio_controle_start_s1_chipselect;        // mm_interconnect_1:pio_controle_start_s1_chipselect -> pio_controle_start:chipselect
+	wire   [31:0] mm_interconnect_1_pio_controle_start_s1_readdata;          // pio_controle_start:readdata -> mm_interconnect_1:pio_controle_start_s1_readdata
+	wire    [1:0] mm_interconnect_1_pio_controle_start_s1_address;           // mm_interconnect_1:pio_controle_start_s1_address -> pio_controle_start:address
+	wire          mm_interconnect_1_pio_controle_start_s1_write;             // mm_interconnect_1:pio_controle_start_s1_write -> pio_controle_start:write_n
+	wire   [31:0] mm_interconnect_1_pio_controle_start_s1_writedata;         // mm_interconnect_1:pio_controle_start_s1_writedata -> pio_controle_start:writedata
+	wire   [31:0] mm_interconnect_1_pio_controle_finish_s1_readdata;         // pio_controle_finish:readdata -> mm_interconnect_1:pio_controle_finish_s1_readdata
+	wire    [1:0] mm_interconnect_1_pio_controle_finish_s1_address;          // mm_interconnect_1:pio_controle_finish_s1_address -> pio_controle_finish:address
 	wire   [31:0] hps_only_master_master_readdata;                           // mm_interconnect_2:hps_only_master_master_readdata -> hps_only_master:master_readdata
 	wire          hps_only_master_master_waitrequest;                        // mm_interconnect_2:hps_only_master_master_waitrequest -> hps_only_master:master_waitrequest
 	wire   [31:0] hps_only_master_master_address;                            // hps_only_master:master_address -> mm_interconnect_2:hps_only_master_master_address
@@ -254,7 +258,7 @@ module soc_system (
 	wire          irq_mapper_receiver1_irq;                                  // button_pio:irq -> [irq_mapper:receiver1_irq, irq_mapper_001:receiver1_irq]
 	wire          irq_mapper_receiver2_irq;                                  // dipsw_pio:irq -> [irq_mapper:receiver2_irq, irq_mapper_001:receiver2_irq]
 	wire          irq_mapper_receiver0_irq;                                  // jtag_uart:av_irq -> [irq_mapper:receiver0_irq, irq_mapper_001:receiver0_irq]
-	wire          rst_controller_reset_out_reset;                            // rst_controller:reset_out -> [ILC:reset_n, accelerator_0:rst_n, button_pio:reset_n, dipsw_pio:reset_n, irq_mapper:reset, jtag_uart:rst_n, led_pio:reset_n, mm_bridge_0:reset, mm_interconnect_0:mm_bridge_0_reset_reset_bridge_in_reset_reset, mm_interconnect_1:fpga_only_master_clk_reset_reset_bridge_in_reset_reset, mm_interconnect_1:mm_bridge_0_reset_reset_bridge_in_reset_reset, mm_interconnect_2:hps_only_master_clk_reset_reset_bridge_in_reset_reset, mm_interconnect_2:hps_only_master_master_translator_reset_reset_bridge_in_reset_reset, mm_interconnect_3:f2sdram_only_master_clk_reset_reset_bridge_in_reset_reset, mm_interconnect_3:f2sdram_only_master_master_translator_reset_reset_bridge_in_reset_reset, onchip_ram:reset, pio_controle:reset_n, rst_translator:in_reset, sysid_qsys:reset_n]
+	wire          rst_controller_reset_out_reset;                            // rst_controller:reset_out -> [ILC:reset_n, accelerator_0:reset, button_pio:reset_n, dipsw_pio:reset_n, irq_mapper:reset, jtag_uart:rst_n, led_pio:reset_n, mm_bridge_0:reset, mm_interconnect_0:mm_bridge_0_reset_reset_bridge_in_reset_reset, mm_interconnect_1:fpga_only_master_clk_reset_reset_bridge_in_reset_reset, mm_interconnect_1:mm_bridge_0_reset_reset_bridge_in_reset_reset, mm_interconnect_2:hps_only_master_clk_reset_reset_bridge_in_reset_reset, mm_interconnect_2:hps_only_master_master_translator_reset_reset_bridge_in_reset_reset, mm_interconnect_3:f2sdram_only_master_clk_reset_reset_bridge_in_reset_reset, mm_interconnect_3:f2sdram_only_master_master_translator_reset_reset_bridge_in_reset_reset, onchip_ram:reset, pio_controle_finish:reset_n, pio_controle_start:reset_n, rst_translator:in_reset, sysid_qsys:reset_n]
 	wire          rst_controller_reset_out_reset_req;                        // rst_controller:reset_req -> [onchip_ram:reset_req, rst_translator:reset_req_in]
 	wire          rst_controller_001_reset_out_reset;                        // rst_controller_001:reset_out -> [mm_interconnect_0:hps_0_h2f_lw_axi_master_agent_clk_reset_reset_bridge_in_reset_reset, mm_interconnect_2:hps_0_f2h_axi_slave_agent_reset_sink_reset_bridge_in_reset_reset, mm_interconnect_3:hps_0_f2h_sdram0_data_translator_reset_reset_bridge_in_reset_reset]
 
@@ -274,9 +278,10 @@ module soc_system (
 	);
 
 	custom_acc_top accelerator_0 (
-		.clk      (clk_clk),                         //        clk.clk
-		.rst_n    (~rst_controller_reset_out_reset), //      rst_n.reset_n
-		.controle ()                                 // control_in.export
+		.clk      (clk_clk),                                       //         clk.clk
+		.i_start  (pio_controle_start_external_connection_export), //  control_in.export
+		.reset    (rst_controller_reset_out_reset),                //         rst.reset
+		.o_finish (accelerator_0_control_out_export)               // control_out.export
 	);
 
 	soc_system_button_pio button_pio (
@@ -629,16 +634,23 @@ module soc_system (
 		.freeze     (1'b0)                                        // (terminated)
 	);
 
-	soc_system_pio_controle pio_controle (
-		.clk        (clk_clk),                                      //                 clk.clk
-		.reset_n    (~rst_controller_reset_out_reset),              //               reset.reset_n
-		.address    (mm_interconnect_1_pio_controle_s1_address),    //                  s1.address
-		.write_n    (~mm_interconnect_1_pio_controle_s1_write),     //                    .write_n
-		.writedata  (mm_interconnect_1_pio_controle_s1_writedata),  //                    .writedata
-		.chipselect (mm_interconnect_1_pio_controle_s1_chipselect), //                    .chipselect
-		.readdata   (mm_interconnect_1_pio_controle_s1_readdata),   //                    .readdata
-		.in_port    (),                                             // external_connection.export
-		.out_port   ()                                              //                    .export
+	soc_system_pio_controle_finish pio_controle_finish (
+		.clk      (clk_clk),                                           //                 clk.clk
+		.reset_n  (~rst_controller_reset_out_reset),                   //               reset.reset_n
+		.address  (mm_interconnect_1_pio_controle_finish_s1_address),  //                  s1.address
+		.readdata (mm_interconnect_1_pio_controle_finish_s1_readdata), //                    .readdata
+		.in_port  (accelerator_0_control_out_export)                   // external_connection.export
+	);
+
+	soc_system_pio_controle_start pio_controle_start (
+		.clk        (clk_clk),                                            //                 clk.clk
+		.reset_n    (~rst_controller_reset_out_reset),                    //               reset.reset_n
+		.address    (mm_interconnect_1_pio_controle_start_s1_address),    //                  s1.address
+		.write_n    (~mm_interconnect_1_pio_controle_start_s1_write),     //                    .write_n
+		.writedata  (mm_interconnect_1_pio_controle_start_s1_writedata),  //                    .writedata
+		.chipselect (mm_interconnect_1_pio_controle_start_s1_chipselect), //                    .chipselect
+		.readdata   (mm_interconnect_1_pio_controle_start_s1_readdata),   //                    .readdata
+		.out_port   (pio_controle_start_external_connection_export)       // external_connection.export
 	);
 
 	soc_system_sysid_qsys sysid_qsys (
@@ -756,11 +768,13 @@ module soc_system (
 		.onchip_ram_s1_byteenable                               (mm_interconnect_1_onchip_ram_s1_byteenable),                //                                                 .byteenable
 		.onchip_ram_s1_chipselect                               (mm_interconnect_1_onchip_ram_s1_chipselect),                //                                                 .chipselect
 		.onchip_ram_s1_clken                                    (mm_interconnect_1_onchip_ram_s1_clken),                     //                                                 .clken
-		.pio_controle_s1_address                                (mm_interconnect_1_pio_controle_s1_address),                 //                                  pio_controle_s1.address
-		.pio_controle_s1_write                                  (mm_interconnect_1_pio_controle_s1_write),                   //                                                 .write
-		.pio_controle_s1_readdata                               (mm_interconnect_1_pio_controle_s1_readdata),                //                                                 .readdata
-		.pio_controle_s1_writedata                              (mm_interconnect_1_pio_controle_s1_writedata),               //                                                 .writedata
-		.pio_controle_s1_chipselect                             (mm_interconnect_1_pio_controle_s1_chipselect),              //                                                 .chipselect
+		.pio_controle_finish_s1_address                         (mm_interconnect_1_pio_controle_finish_s1_address),          //                           pio_controle_finish_s1.address
+		.pio_controle_finish_s1_readdata                        (mm_interconnect_1_pio_controle_finish_s1_readdata),         //                                                 .readdata
+		.pio_controle_start_s1_address                          (mm_interconnect_1_pio_controle_start_s1_address),           //                            pio_controle_start_s1.address
+		.pio_controle_start_s1_write                            (mm_interconnect_1_pio_controle_start_s1_write),             //                                                 .write
+		.pio_controle_start_s1_readdata                         (mm_interconnect_1_pio_controle_start_s1_readdata),          //                                                 .readdata
+		.pio_controle_start_s1_writedata                        (mm_interconnect_1_pio_controle_start_s1_writedata),         //                                                 .writedata
+		.pio_controle_start_s1_chipselect                       (mm_interconnect_1_pio_controle_start_s1_chipselect),        //                                                 .chipselect
 		.sysid_qsys_control_slave_address                       (mm_interconnect_1_sysid_qsys_control_slave_address),        //                         sysid_qsys_control_slave.address
 		.sysid_qsys_control_slave_readdata                      (mm_interconnect_1_sysid_qsys_control_slave_readdata)        //                                                 .readdata
 	);
