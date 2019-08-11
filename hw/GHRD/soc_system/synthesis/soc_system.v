@@ -277,7 +277,9 @@ module soc_system (
 		.avmm_rddata (mm_interconnect_1_ilc_avalon_slave_readdata)   //             .readdata
 	);
 
-	custom_acc_top accelerator_0 (
+	custom_acc_top #(
+		.NUM_CICLOS (50000000)
+	) accelerator_0 (
 		.clk      (clk_clk),                                       //         clk.clk
 		.i_start  (pio_controle_start_external_connection_export), //  control_in.export
 		.reset    (rst_controller_reset_out_reset),                //         rst.reset
