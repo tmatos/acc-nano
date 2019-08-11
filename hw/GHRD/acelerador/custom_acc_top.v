@@ -29,28 +29,40 @@ module custom_acc_top(
 			r_contador <= 0;
 			r_finish <= 0;
 		end
-		else if(r_estado == 0) begin
-			if(w_start == 1) begin
-				r_estado <= 1;
-				r_contador <= (r_contador + 1);
-				r_finish <= 0;
-			end
-			else begin
-				r_estado <= 0;
-				r_contador <= 0;
-			end
-		end
-		else if(r_estado == 1) begin
-			if(r_contador == NUM_CICLOS) begin
-				r_estado <= 0;
-				r_contador <= 0;
-				r_finish <= 1;
-			end
-			else begin
-				r_estado <= 1;
-				r_contador <= (r_contador + 1);
-				r_finish <= 0;
-			end
+		else
+		begin
+			case (r_estado)
+				0:
+				begin
+					if(w_start == 1) begin
+						r_estado <= 1;
+						r_contador <= (r_contador + 1);
+						r_finish <= 0;
+					end
+					else begin
+						r_estado <= 0;
+						r_contador <= 0;
+					end
+				end
+				
+				1:
+				begin
+					if(r_contador == NUM_CICLOS) begin
+						r_estado <= 0;
+						r_contador <= 0;
+						r_finish <= 1;
+					end
+					else begin
+						r_estado <= 1;
+						r_contador <= (r_contador + 1);
+						r_finish <= 0;
+					end
+				end
+				
+				//default:
+				//begin
+				//end
+			endcase
 		end
 		
 	end
