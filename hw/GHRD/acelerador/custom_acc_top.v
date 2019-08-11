@@ -33,6 +33,7 @@ module custom_acc_top(
 			if(w_start == 1) begin
 				r_estado <= 1;
 				r_contador <= (r_contador + 1);
+				r_finish <= 0;
 			end
 			else begin
 				r_estado <= 0;
@@ -43,22 +44,13 @@ module custom_acc_top(
 			if(r_contador == NUM_CICLOS) begin
 				r_estado <= 0;
 				r_contador <= 0;
+				r_finish <= 1;
 			end
 			else begin
 				r_estado <= 1;
 				r_contador <= (r_contador + 1);
-			end
-		end
-		
-		if(r_estado == 1) begin
-			if(r_contador == NUM_CICLOS) begin
-				r_finish <= 1;
-			end else begin
 				r_finish <= 0;
 			end
-		end
-		else begin
-			r_finish <= 0;
 		end
 		
 	end
