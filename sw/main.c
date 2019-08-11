@@ -121,15 +121,15 @@ int main()
 
     clock_gettime(CLOCK_REALTIME, &inicio);  /// T_zero
 
-    printf("DBG: Enviar pulso de start \n");
+    printf("DBG: Enviar sinal de start \n");
 
 	// escreve um valor de controle para iniciar o acc
 	*(uint32_t *)h2p_acc_start = (uint32_t) 0xFFFFFFFF;
-    usleep(10);
-    // logo em seguida volta a zero, pois queremos apenas um pulso
-    *(uint32_t *)h2p_acc_start = (uint32_t) 0x00000000;
+    ////usleep(10);
+    ////// logo em seguida volta a zero, pois queremos apenas um pulso
+    ////*(uint32_t *)h2p_acc_start = (uint32_t) 0x00000000;
 
-    printf("DBG: Pulso de start enviado \n");
+    printf("DBG: Sinal de start enviado \n");
 
     printf("DBG: Esperando retorno de finish \n");
 
@@ -144,6 +144,9 @@ int main()
     } while( finish == 0 );
 
     printf("DBG: Retorno de finish recebido = %8X \n", finish);
+
+    printf("DBG: Zerar sinal de start \n");
+    *(uint32_t *)h2p_acc_start = (uint32_t) 0x00000000;
 
     clock_gettime(CLOCK_REALTIME, &fim);  /// T_final
 
