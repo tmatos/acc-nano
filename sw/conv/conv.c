@@ -116,41 +116,46 @@ int main()
     struct timespec inicio;
     struct timespec fim;
 
-    clock_gettime(CLOCK_REALTIME, &inicio);  /// T_zero
+    ///clock_gettime(CLOCK_REALTIME, &inicio);  /// T_zero
 
     printf("DBG: Enviando dados para o chip \n");
     memcpy( (void*)h2p_onchip_ram_in, (void*)numeros_in, qtde_nums*4);
     printf("DBG: OK \n");
 
-    printf("DBG: Enviar pulso de start \n");
+    clock_gettime(CLOCK_REALTIME, &inicio);  /// T_zero
+
+    ///printf("DBG: Enviar pulso de start \n");
 
     // escreve um valor de controle para iniciar o acc
     *(uint32_t *)h2p_acc_start = (uint32_t) 0xFFFFFFFF;
-    usleep(5);
+    //usleep(1); // na vdd, nao precisa de sleep pra o acc detectar
     // logo em seguida volta a zero, pois queremos apenas um pulso
     *(uint32_t *)h2p_acc_start = (uint32_t) 0x00000000;
 
-    printf("DBG: Pulso de start enviado \n");
+    ///printf("DBG: Pulso de start enviado \n");
 
-    printf("DBG: Esperando retorno de finish \n");
+    ///printf("DBG: Esperando retorno de finish \n");
 
     // POOLING
 
     volatile uint32_t finish;
 
     do {
-        usleep(250000); // 250000 us = 0.25 s
+        //usleep(250000); // 250000 us = 0.25 s
+        //usleep(1000); // 1000 us = 0.001 s
         finish = *(uint32_t *)h2p_acc_finish;
-        printf("DBG: pooling, finish = %8X \n", finish);
+        ///printf("DBG: pooling, finish = %8X \n", finish);
     } while( finish == 0 );
 
-    printf("DBG: Retorno de finish recebido = %8X \n", finish);
+    ///printf("DBG: Retorno de finish recebido = %8X \n", finish);
+
+    clock_gettime(CLOCK_REALTIME, &fim);  /// T_final
 
     printf("DBG: Recebendo resultados do chip \n");
     memcpy( (void*)results_out, (void*)h2p_onchip_ram_out, qtde_nums*4);
     printf("DBG: OK \n");
 
-    clock_gettime(CLOCK_REALTIME, &fim);  /// T_final
+    ///clock_gettime(CLOCK_REALTIME, &fim);  /// T_final
 
     // calculo do delta_t em ns
     long tempo = ((fim.tv_sec * 1000000000 + fim.tv_nsec) - (inicio.tv_sec * 1000000000 + inicio.tv_nsec));
