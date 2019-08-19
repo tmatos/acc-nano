@@ -110,7 +110,7 @@ int main()
 
     // RAM inside the FPGA
     h2p_onchip_ram_in = virtual_base + ( ( unsigned long  )( ALT_LWFPGASLVS_OFST + ONCHIP_RAM_BASE + 0 ) & ( unsigned long)( HW_REGS_MASK ) );
-    h2p_onchip_ram_out = virtual_base + ( ( unsigned long  )( ALT_LWFPGASLVS_OFST + ONCHIP_RAM_BASE + 512 ) & ( unsigned long)( HW_REGS_MASK ) );
+    h2p_onchip_ram_out = virtual_base + ( ( unsigned long  )( ALT_LWFPGASLVS_OFST + ONCHIP_RAM_BASE + 1024 ) & ( unsigned long)( HW_REGS_MASK ) );
 
     // para contagem de intervalos de tempo
     struct timespec inicio;
