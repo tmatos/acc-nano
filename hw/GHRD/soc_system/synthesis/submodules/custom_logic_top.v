@@ -194,19 +194,20 @@ endmodule
 
 
 // filtro fir
+// com coefs fixos
 module filtro(
    input clk,
    input reset,
    input enable,
-   input [31:0] entrada,
-   output reg [31:0] saida
+   input signed [31:0] entrada,
+   output reg signed [31:0] saida
    );
 
    // numero de coeficientes do filtro
    parameter N = 13;
 
-   // coeficientes do filtro (literal de 32 bits em decimal é padrão no verilog)
-   parameter
+   // coeficientes do filtro (literal de 32 bits em decimal eh padrao no verilog)
+   parameter signed [31:0]
       C0  = -24738871,
       C1  = -112681234,
       C2  = -170991139,
@@ -221,11 +222,11 @@ module filtro(
       C11 = -112681234,
       C12 = -24738871;
    
-   reg [31:0] buff [0:N-1];
+   reg signed [31:0] buff [0:N-1];
    
-   wire [63:0] p0, p1, p2, p3, p4, p5;
-   wire [63:0] p0p1, p2p3, p4p5;
-   wire [63:0] soma;
+   wire signed [63:0] p0, p1, p2, p3, p4, p5;
+   wire signed [63:0] p0p1, p2p3, p4p5;
+   wire signed [63:0] soma;
    
    assign p0 = buff[0]*C0 + buff[1]*C1;
    assign p1 = buff[2]*C2 + buff[3]*C3;
@@ -238,7 +239,7 @@ module filtro(
    assign p2p3 = p2 + p3;
    assign p4p5 = p4 + p5;
    
-   assign soma = p0p1 + p2p3 + p4p5 + 64'h0000_0000_8000_0000;
+   assign soma = p0p1 + p2p3 + p4p5 + 64'sh0000_0000_8000_0000;
 
    integer i, k;
    
