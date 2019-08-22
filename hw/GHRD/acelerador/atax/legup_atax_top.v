@@ -49,11 +49,34 @@ module legup_atax_top(
 parameter BUS_SIZE = 64;
 parameter BUS_BYTES = 8;
 
+wire w_finish_capture;
+reg r_finish_capture;
+
+assign coe_finish_export = r_finish_capture;
+
+always@(posedge clk, posedge reset)
+begin
+	if(reset) begin
+		r_finish_capture <= 0;
+	end
+	else begin
+      if( coe_start_export ) begin
+        r_finish_capture <= 0;
+      end
+      else begin
+         if( w_finish_capture ) begin
+		     r_finish_capture <= 1;
+         end
+      end
+	end
+end
+
+
 kernel_atax_top kernel_0 (
    .clk(clk),
    .reset(reset),
    .start(coe_start_export),
-   .finish(coe_finish_export),
+   .finish(w_finish_capture),
 
    .main_y_write_enable_a(),
    .main_y_in_a(),
