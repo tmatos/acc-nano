@@ -1,0 +1,682 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+d/home/tiago/altera/18.1/modelsim_ase/bin
+valtfp_adder64_14
+Z0 !s110 1566438729
+!i10b 1
+!s100 Ch;`56RD^D`?E<_I;9ReF2
+InVSmf444nmf0=?flSG:8n3
+Z1 VDg1SIo80bB@j0V0VzS_@n1
+Z2 d/home/tiago/projects/FPGA/de10-nano/acc-nano/hw/GHRD/acelerador/atax/atax_tb
+Z3 w1566362176
+Z4 8/home/tiago/projects/FPGA/de10-nano/acc-nano/hw/GHRD/acelerador/atax/atax_tb/altfp_adder64_14.v
+Z5 F/home/tiago/projects/FPGA/de10-nano/acc-nano/hw/GHRD/acelerador/atax/atax_tb/altfp_adder64_14.v
+L0 3470
+Z6 OV;L;10.5b;63
+r1
+!s85 0
+31
+Z7 !s108 1566438729.000000
+Z8 !s107 /home/tiago/projects/FPGA/de10-nano/acc-nano/hw/GHRD/acelerador/atax/atax_tb/altfp_adder64_14.v|
+Z9 !s90 -reportprogress|300|-work|work|-stats=none|/home/tiago/projects/FPGA/de10-nano/acc-nano/hw/GHRD/acelerador/atax/atax_tb/altfp_adder64_14.v|
+!i113 1
+Z10 o-work work
+Z11 tCvgOpt 0
+valtfp_adder64_14_altbarrel_shift_otd
+R0
+!i10b 1
+!s100 H7`Ti[<;nfFP^SOR;5j3P3
+I4OGShOz45I;8O=bk:nh]Z0
+R1
+R2
+R3
+R4
+R5
+L0 51
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+valtfp_adder64_14_altbarrel_shift_u0g
+R0
+!i10b 1
+!s100 @efUcN3N<@4Vob?CfjH^D2
+I^8^J>2VP7bjAZYPY^GAOo3
+R1
+R2
+R3
+R4
+R5
+L0 116
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+valtfp_adder64_14_altfp_add_sub_tkj
+R0
+!i10b 1
+!s100 gml6``Mm5k=Xi^WMh?Jj21
+IFBYT[`@]VB8MMUbJoo0PA3
+R1
+R2
+R3
+R4
+R5
+L0 953
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+valtfp_adder64_14_altpriority_encoder_3e8
+R0
+!i10b 1
+!s100 K7=m5?`F`JkMzOUSP>lJ61
+Ie0Amag63eHIGhO8S[3ZTC0
+R1
+R2
+R3
+R4
+R5
+L0 225
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+valtfp_adder64_14_altpriority_encoder_3v7
+R0
+!i10b 1
+!s100 AA:;AO0Xze_>Z]ozO3m7T2
+IFi;=2i2laX^d3lYXJBLLW3
+R1
+R2
+R3
+R4
+R5
+L0 359
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+valtfp_adder64_14_altpriority_encoder_6e8
+R0
+!i10b 1
+!s100 C`i[nZ3L@8LUDXGVFhHHj0
+I=O1AIn@9diBM@XYGPlzDF0
+R1
+R2
+R3
+R4
+R5
+L0 244
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+valtfp_adder64_14_altpriority_encoder_6v7
+R0
+!i10b 1
+!s100 PQ=i6Y9Q@eRPazSe1U3lE1
+IN=m2P_U<`;>b0W;2K6gbd0
+R1
+R2
+R3
+R4
+R5
+L0 375
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+valtfp_adder64_14_altpriority_encoder_be8
+R0
+!i10b 1
+!s100 YB_?N]66IQGm=2FEE8fY71
+IBD]oJ]<Tl5KE8[hZN]<F]0
+R1
+R2
+R3
+R4
+R5
+L0 277
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+valtfp_adder64_14_altpriority_encoder_bv7
+R0
+!i10b 1
+!s100 227Y`Mf==`g;kLAG]>I>g2
+IzbZXFQ=]76:FYc?^@o48C0
+R1
+R2
+R3
+R4
+R5
+L0 403
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+valtfp_adder64_14_altpriority_encoder_f48
+R0
+!i10b 1
+!s100 MbD[9oK;O91__TXPKn[T12
+IZ7a:]4WIjQPMaCXU[akMc0
+R1
+R2
+R3
+R4
+R5
+L0 844
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+valtfp_adder64_14_altpriority_encoder_fj8
+R0
+!i10b 1
+!s100 D=Cl=Y`JUD5XU7^:9@j<V3
+I5moFIjWnOHa<^53ThZETk1
+R1
+R2
+R3
+R4
+R5
+L0 686
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+valtfp_adder64_14_altpriority_encoder_h39
+R0
+!i10b 1
+!s100 :cOk_^LZei>Knm>G^fg8S3
+I9>Aok3?0>oK@TGeLgMhV=0
+R1
+R2
+R3
+R4
+R5
+L0 872
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+valtfp_adder64_14_altpriority_encoder_hi9
+R0
+!i10b 1
+!s100 NDo1M8FnkAc1Y[0R^Y8Q31
+I[oV:WGLQ>8ok^F8eUgRV13
+R1
+R2
+R3
+R4
+R5
+L0 719
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+valtfp_adder64_14_altpriority_encoder_ina
+R0
+!i10b 1
+!s100 `WF;K5lUWWchc4@dFmXi>2
+IDooI?B2mkD:=_a9G^e2Ao3
+R1
+R2
+R3
+R4
+R5
+L0 900
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+valtfp_adder64_14_altpriority_encoder_n28
+R0
+!i10b 1
+!s100 ?RTR@7j8flSkI?]E=5T6o0
+IZSYSQjzG7^2`CNChVci]:2
+R1
+R2
+R3
+R4
+R5
+L0 772
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+valtfp_adder64_14_altpriority_encoder_nh8
+R0
+!i10b 1
+!s100 ^eecd:1CF9^8J;iNF]h;R2
+Ij58US>hh86FY6NaVT=TeT1
+R1
+R2
+R3
+R4
+R5
+L0 601
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+valtfp_adder64_14_altpriority_encoder_q28
+R0
+!i10b 1
+!s100 ^1Y;RKQ:?e9Lon5`AcTT=3
+I]mUh9O1f7DVGTE?FN>`B20
+R1
+R2
+R3
+R4
+R5
+L0 788
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+valtfp_adder64_14_altpriority_encoder_qh8
+R0
+!i10b 1
+!s100 nJ3QJR?6LM2?ig@^=@4@30
+IHd?^]KVP4?hoVckgU?BVG0
+R1
+R2
+R3
+R4
+R5
+L0 620
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+valtfp_adder64_14_altpriority_encoder_r08
+R0
+!i10b 1
+!s100 =CWj<eGGR<[ocjFWPzbS;3
+I]9d@J<VbUHMk<Z8PN:>@d3
+R1
+R2
+R3
+R4
+R5
+L0 431
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+valtfp_adder64_14_altpriority_encoder_rf8
+R0
+!i10b 1
+!s100 hAI3XUZ:PC3e>44a<GT=^3
+IKA4WjiHFU:Vf;Q`4Ul7z[0
+R1
+R2
+R3
+R4
+R5
+L0 310
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+valtfp_adder64_14_altpriority_encoder_te9
+R0
+!i10b 1
+!s100 6aGB6QO8Y2ighk0L_RY=G1
+I6B1F`eEJ]fI`Gil@XLGzM3
+R1
+R2
+R3
+R4
+R5
+L0 491
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+valtfp_adder64_14_altpriority_encoder_tv8
+R0
+!i10b 1
+!s100 lEcLH?8n4hciHSj<kZCLn0
+I^J9?ioaP0oZIl=Re`]5G32
+R1
+R2
+R3
+R4
+R5
+L0 459
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+valtfp_adder64_14_altpriority_encoder_uu8
+R0
+!i10b 1
+!s100 ^^h;0>l<J3SC;[]j3nCRR1
+I]hCoRnc4FCI7;R@>[8V`P1
+R1
+R2
+R3
+R4
+R5
+L0 524
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+valtfp_adder64_14_altpriority_encoder_v28
+R0
+!i10b 1
+!s100 5PjzX>]bON7hb20Z9c_AW0
+I[nT14>lfCmniFFH@ScYaQ3
+R1
+R2
+R3
+R4
+R5
+L0 816
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+valtfp_adder64_14_altpriority_encoder_vh8
+R0
+!i10b 1
+!s100 J0:cYDYDOmMRoEIWEP7I12
+I_lZlN8]=30;J5mgRIFbZG1
+R1
+R2
+R3
+R4
+R5
+L0 653
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+valtfp_multiplier64_11
+R0
+!i10b 1
+!s100 2`GmDKbm175U0S_XDQ=F41
+IgcX]8?7YWUzKlfazNTHAK0
+R1
+R2
+Z12 w1566362088
+Z13 8/home/tiago/projects/FPGA/de10-nano/acc-nano/hw/GHRD/acelerador/atax/atax_tb/altfp_multiplier64_11.v
+Z14 F/home/tiago/projects/FPGA/de10-nano/acc-nano/hw/GHRD/acelerador/atax/atax_tb/altfp_multiplier64_11.v
+L0 814
+R6
+r1
+!s85 0
+31
+R7
+Z15 !s107 /home/tiago/projects/FPGA/de10-nano/acc-nano/hw/GHRD/acelerador/atax/atax_tb/altfp_multiplier64_11.v|
+Z16 !s90 -reportprogress|300|-work|work|-stats=none|/home/tiago/projects/FPGA/de10-nano/acc-nano/hw/GHRD/acelerador/atax/atax_tb/altfp_multiplier64_11.v|
+!i113 1
+R10
+R11
+valtfp_multiplier64_11_altfp_mult_kbo
+R0
+!i10b 1
+!s100 =SJ`5GANBUDcSS7XERb6j1
+IO7PoJXD0jS5J?[h<>[NfC2
+R1
+R2
+R12
+R13
+R14
+L0 47
+R6
+r1
+!s85 0
+31
+R7
+R15
+R16
+!i113 1
+R10
+R11
+vcore_tb
+Z17 !s110 1566438728
+!i10b 1
+!s100 ^:HSbFQQ2Vm?`J6[MMMCI3
+InbaeZa?g907CK`OYQOSGZ0
+R1
+R2
+w1566438459
+8/home/tiago/projects/FPGA/de10-nano/acc-nano/hw/GHRD/acelerador/atax/atax_tb/core_tb.v
+F/home/tiago/projects/FPGA/de10-nano/acc-nano/hw/GHRD/acelerador/atax/atax_tb/core_tb.v
+L0 3
+R6
+r1
+!s85 0
+31
+Z18 !s108 1566438728.000000
+!s107 /home/tiago/projects/FPGA/de10-nano/acc-nano/hw/GHRD/acelerador/atax/atax_tb/core_tb.v|
+!s90 -reportprogress|300|-work|work|-stats=none|/home/tiago/projects/FPGA/de10-nano/acc-nano/hw/GHRD/acelerador/atax/atax_tb/core_tb.v|
+!i113 1
+R10
+R11
+vkernel_atax
+R0
+!i10b 1
+!s100 TgW5H6N7@b5A0ha;LCB8`3
+I0`_:DG26_g<Md0aHo0:_;2
+R1
+R2
+Z19 w1566357986
+Z20 8/home/tiago/projects/FPGA/de10-nano/acc-nano/hw/GHRD/acelerador/atax/atax.v
+Z21 F/home/tiago/projects/FPGA/de10-nano/acc-nano/hw/GHRD/acelerador/atax/atax.v
+L0 308
+R6
+r1
+!s85 0
+31
+R18
+Z22 !s107 /home/tiago/projects/FPGA/de10-nano/acc-nano/hw/GHRD/acelerador/atax/atax.v|
+Z23 !s90 -reportprogress|300|-work|work|-stats=none|/home/tiago/projects/FPGA/de10-nano/acc-nano/hw/GHRD/acelerador/atax/atax.v|
+!i113 1
+R10
+R11
+vkernel_atax_top
+R17
+!i10b 1
+!s100 a:z0mT6IOiL>LM0L;K41g0
+Id6_CjU^_6_0fcTa1dk@dg3
+R1
+R2
+R19
+R20
+R21
+L0 17
+R6
+r1
+!s85 0
+31
+R18
+R22
+R23
+!i113 1
+R10
+R11
+vram_dual_port
+R0
+!i10b 1
+!s100 EK1bRY;]3UYe2:d;5Mm6P0
+IknM0`ZkX]_o]0UMKT`DIW0
+R1
+R2
+R19
+R20
+R21
+L0 1117
+R6
+r1
+!s85 0
+31
+R18
+R22
+R23
+!i113 1
+R10
+R11
