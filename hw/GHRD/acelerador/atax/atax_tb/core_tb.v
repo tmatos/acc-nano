@@ -51,6 +51,7 @@ module core_tb;
       i = i + 1;
    end
 
+/*
    kernel_atax_top duv ( 
       .clk(clk),
       .reset(reset),
@@ -96,6 +97,57 @@ module core_tb;
       .main_A_a0_a0_address_b(),
       .main_A_a0_a0_out_b()
 
+   );
+*/
+
+
+defparam duv.BUS_SIZE = 64;
+defparam duv.BUS_BYTES = 8;
+
+legup_atax_top duv (
+
+   .clk(clk),
+   .reset(reset),
+   .coe_start_export(start),
+   .coe_finish_export(finish),
+
+   .cso_avmclk_clk(),
+   .rso_avmrst_reset(),
+
+
+   // A (2d array)
+
+   .avm_arg_A_read(),
+   .avm_arg_A_write(),
+   .avm_arg_A_address(),
+   .avm_arg_A_readdata(),
+   .avm_arg_A_writedata(),
+   .avm_arg_A_waitrequest(),
+   .avm_arg_A_byteenable(),
+
+   // x (1d array)
+
+   .avm_arg_x_read(),
+   .avm_arg_x_write(),
+   .avm_arg_x_address(),
+   .avm_arg_x_readdata(),
+   .avm_arg_x_writedata(),
+   .avm_arg_x_waitrequest(),
+   .avm_arg_x_byteenable(),
+
+   // y (1d array)
+
+   .avm_arg_y_read(),
+   .avm_arg_y_write(),
+   .avm_arg_y_address(),
+   .avm_arg_y_readdata(),
+   .avm_arg_y_writedata(),
+   .avm_arg_y_waitrequest(),
+   .avm_arg_y_byteenable()
+
+
+   // temp (1d array)
+   // not needed
    );
 
 endmodule
