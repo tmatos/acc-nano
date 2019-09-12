@@ -111,8 +111,8 @@ legup_atax_top duv (
    .coe_start_export(start),
    .coe_finish_export(finish),
 
-   .cso_avmclk_clk(),
-   .rso_avmrst_reset(),
+   //.cso_avmclk_clk(),
+   //.rso_avmrst_reset(),
 
 
    // A (2d array)

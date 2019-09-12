@@ -9,7 +9,7 @@ z2
 cModel Technology
 d/home/tiago/altera/18.1/modelsim_ase/bin
 valtfp_adder64_14
-Z0 !s110 1566503358
+Z0 !s110 1568319081
 !i10b 1
 !s100 Ch;`56RD^D`?E<_I;9ReF2
 IN;SQ@SJmd=oHORC=Y=Wn<2
@@ -23,7 +23,7 @@ Z6 OV;L;10.5b;63
 r1
 !s85 0
 31
-Z7 !s108 1566503358.000000
+Z7 !s108 1568319081.000000
 Z8 !s107 /home/tiago/Projetos/GitHub/acc-nano/hw/GHRD/acelerador/atax/atax_tb/altfp_adder64_14.v|
 Z9 !s90 -reportprogress|300|-work|work|-stats=none|/home/tiago/Projetos/GitHub/acc-nano/hw/GHRD/acelerador/atax/atax_tb/altfp_adder64_14.v|
 !i113 1
@@ -599,11 +599,11 @@ R11
 vcore_tb
 R0
 !i10b 1
-!s100 FAZciV<c3H8g5iiOJ8`KN3
-IUY4nejli0@IbWL^TUaW=01
+!s100 AbD8HU^6:`d;<4h>W<STn1
+I`6@QTS[1[J:i<;:<`QPgA0
 R1
 R2
-w1566502845
+w1568319079
 8/home/tiago/Projetos/GitHub/acc-nano/hw/GHRD/acelerador/atax/atax_tb/core_tb.v
 F/home/tiago/Projetos/GitHub/acc-nano/hw/GHRD/acelerador/atax/atax_tb/core_tb.v
 L0 3
@@ -656,6 +656,27 @@ r1
 R7
 R19
 R20
+!i113 1
+R10
+R11
+vlegup_atax_top
+!s110 1568319082
+!i10b 1
+!s100 cDDJ?TLNYA>VZdIOR8l7N2
+I5lAF`KnNT2I:TGK<dX5];2
+R1
+R2
+w1568318609
+8/home/tiago/Projetos/GitHub/acc-nano/hw/GHRD/acelerador/atax/legup_atax_top.v
+F/home/tiago/Projetos/GitHub/acc-nano/hw/GHRD/acelerador/atax/legup_atax_top.v
+L0 2
+R6
+r1
+!s85 0
+31
+!s108 1568319082.000000
+!s107 /home/tiago/Projetos/GitHub/acc-nano/hw/GHRD/acelerador/atax/legup_atax_top.v|
+!s90 -reportprogress|300|-work|work|-stats=none|/home/tiago/Projetos/GitHub/acc-nano/hw/GHRD/acelerador/atax/legup_atax_top.v|
 !i113 1
 R10
 R11
